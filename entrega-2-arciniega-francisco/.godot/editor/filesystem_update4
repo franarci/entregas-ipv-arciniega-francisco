@@ -1,0 +1,14 @@
+res://default_env.tres
+res://entities/player/Player.tscn
+res://entities/player/cannon.gd
+res://entities/abstractProjectile.gd
+res://entities/AbstractProjectile.gd
+res://entities/AbstractProjectile.tscn
+res://Projectile.tscn
+res://entities/player/Player.gd
+res://entities/player/projectile.tscn
+res://Main.tscn
+res://main.gd
+res://entities/turret/turret.tscn
+res://entities/turret/turret.gd
+res://entities/turret/projectile.tscn
