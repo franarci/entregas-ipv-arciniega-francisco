@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://dnc5muoeyfwah"]
+
+[ext_resource type="PackedScene" path="res://entities/player/Player.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://cwss7yl8udbui" path="res://assets/textures/background.png" id="2"]
+[ext_resource type="Script" uid="uid://bkmvt4ya2xfm8" path="res://Main.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://bscjwoaotlcqc" path="res://entities/enemies/Turret.tscn" id="4"]
+[ext_resource type="Script" uid="uid://ertnqm8kd3lw" path="res://entities/enemies/TurretsSpawner.gd" id="5"]
+[ext_resource type="Texture2D" uid="uid://dwg3vpmlm24nh" path="res://assets/textures/floor.png" id="6"]
+
+[node name="Main" type="Node"]
+script = ExtResource("3")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("2")
+expand_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("1")]
+position = Vector2(413.003, 395.272)
+
+[node name="Floor" type="Sprite2D" parent="."]
+position = Vector2(400, 513.5)
+scale = Vector2(12.1212, 2.62121)
+texture = ExtResource("6")
+
+[node name="TurretsSpawner" type="Node" parent="."]
+script = ExtResource("5")
+turret_scene = ExtResource("4")
