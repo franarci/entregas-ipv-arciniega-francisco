@@ -1,0 +1,7 @@
+res://entities/player/Player.tscn::96703eacb31964024f698b7bd1fbbdbd::1788287326::res://.godot/exported/133200997/export-62eb336cb475cb7d34f25e10e9933e51-Player.scn
+res://entities/player/projectile.tscn::c4f08e1b43f6310c506f078b795b61eb::1788286923::res://.godot/exported/133200997/export-dd60b6efb4fe187d1b6533effe7939b8-projectile.scn
+res://entities/turret/projectile.tscn::3f9467de7c611a447de63c6b6ef55352::1788287680::res://.godot/exported/133200997/export-d5a11936b59e2f6a4716db26fd284261-projectile.scn
+res://entities/turret/turret.tscn::35d980a6401c74a472ce1f1a6e52c411::1788287219::res://.godot/exported/133200997/export-3337d8d53e5c7071c40be334d1d138e5-turret.scn
+res://entities/AbstractProjectile.tscn::cd26797ac9b477048ef16f8a667392e2::1788224577::res://.godot/exported/133200997/export-4adaf8132168ba40d0f279840613f33b-AbstractProjectile.scn
+res://default_env.tres::19cfd977e4ffc09e3b876fa830f440d2::1788287681::res://.godot/exported/133200997/export-7cf3fd67ad9f55210191d77b582b8209-default_env.res
+res://Main.tscn::9f089de6d06a01837ad01bcd853ee7c6::1788287522::res://.godot/exported/133200997/export-bcb0d2eb5949c52b6a65bfe9de3e985b-Main.scn

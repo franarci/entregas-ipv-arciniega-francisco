@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bsd5qpi1opt0i"]
+
+[ext_resource type="Script" uid="uid://bmqv254iajfyu" path="res://entities/player/Player.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://ysiugeunlxf6" path="res://assets/textures/player.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b4yu5v8d5yd3b" path="res://assets/textures/cannon.png" id="3_l3c03"]
+[ext_resource type="Script" uid="uid://d13mqbeq0xodk" path="res://entities/player/cannon.gd" id="4_eaotn"]
+[ext_resource type="PackedScene" uid="uid://0j384j58grjq" path="res://entities/player/projectile.tscn" id="5_g3lhm"]
+
+[node name="Player" type="Sprite2D" unique_id=993265499]
+texture = ExtResource("2")
+script = ExtResource("1")
+speed = 200.0
+
+[node name="Cannon" type="Sprite2D" parent="." unique_id=1619945215]
+texture = ExtResource("3_l3c03")
+script = ExtResource("4_eaotn")
+projectile_scene = ExtResource("5_g3lhm")
+
+[node name="FirePosition" type="Marker2D" parent="Cannon" unique_id=963350231]
+position = Vector2(20, 0)
