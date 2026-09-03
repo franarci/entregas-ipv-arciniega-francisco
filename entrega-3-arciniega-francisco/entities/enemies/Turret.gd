@@ -8,10 +8,10 @@ extends Sprite2D
 var player: Node2D
 var projectile_container: Node
 
-func initialize(turret_pos: Vector2, player: Node2D, projectile_container: Node) -> void:
+func initialize(turret_pos: Vector2, p_player: Node2D, p_projectile_container: Node) -> void:
 	global_position = turret_pos
-	self.player = player
-	self.projectile_container = projectile_container
+	self.player = p_player
+	self.projectile_container = p_projectile_container
 	fire_timer.connect("timeout", fire_at_player)
 	fire_timer.start()
 

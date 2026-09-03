@@ -6,13 +6,11 @@
 [ext_resource type="Script" uid="uid://dw1dbb5kq664d" path="res://entities/player/Cannon.gd" id="4"]
 [ext_resource type="PackedScene" path="res://entities/player/PlayerProjectile.tscn" id="5"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_630k3"]
-radius = 29.0
-height = 64.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnhwq"]
+size = Vector2(66, 64)
 
 [node name="Player" type="CharacterBody2D" unique_id=2008342176]
 script = ExtResource("1")
-JUMP_SPEED = -200.0
 
 [node name="Body" type="Sprite2D" parent="." unique_id=1098397607]
 texture = ExtResource("2")
@@ -26,4 +24,5 @@ projectile_scene = ExtResource("5")
 position = Vector2(15, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=743788708]
-shape = SubResource("CapsuleShape2D_630k3")
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_tnhwq")

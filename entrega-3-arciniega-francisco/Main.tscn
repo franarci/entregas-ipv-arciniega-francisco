@@ -1,30 +1,109 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnc5muoeyfwah"]
+[gd_scene format=3 uid="uid://dnc5muoeyfwah"]
 
-[ext_resource type="PackedScene" path="res://entities/player/Player.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bnmxvq38p5e8f" path="res://entities/player/Player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cwss7yl8udbui" path="res://assets/textures/background.png" id="2"]
 [ext_resource type="Script" uid="uid://bkmvt4ya2xfm8" path="res://Main.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://bscjwoaotlcqc" path="res://entities/enemies/Turret.tscn" id="4"]
 [ext_resource type="Script" uid="uid://ertnqm8kd3lw" path="res://entities/enemies/TurretsSpawner.gd" id="5"]
 [ext_resource type="Texture2D" uid="uid://dwg3vpmlm24nh" path="res://assets/textures/floor.png" id="6"]
+[ext_resource type="PackedScene" uid="uid://b8ocn18sixhg7" path="res://entities/world/floor.tscn" id="6_3dxm6"]
+[ext_resource type="Texture2D" uid="uid://j14wrxanwhni" path="res://assets/textures/player.png" id="7_lgr22"]
 
-[node name="Main" type="Node"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhk8p"]
+size = Vector2(62, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnhwq"]
+size = Vector2(66, 136)
+
+[node name="Main" type="Node" unique_id=1155895451]
 script = ExtResource("3")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1486616351]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer" unique_id=1475189037]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 8.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2")
 expand_mode = 1
 
-[node name="Player" parent="." instance=ExtResource("1")]
-position = Vector2(413.003, 395.272)
+[node name="Player" parent="." unique_id=881830186 instance=ExtResource("1")]
+position = Vector2(413.003, 450)
+collision_layer = 2
+collision_mask = 7
+JUMP_SPEED = -500.0
+GRAVITY = 10.005
 
-[node name="Floor" type="Sprite2D" parent="."]
-position = Vector2(400, 513.5)
-scale = Vector2(12.1212, 2.62121)
-texture = ExtResource("6")
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=133809881]
 
-[node name="TurretsSpawner" type="Node" parent="."]
+[node name="TurretsSpawner" type="Node" parent="." unique_id=1856155815]
 script = ExtResource("5")
 turret_scene = ExtResource("4")
+
+[node name="Floor" parent="." unique_id=1789169355 instance=ExtResource("6_3dxm6")]
+position = Vector2(400, 562)
+
+[node name="Floor2" parent="." unique_id=982748056 instance=ExtResource("6_3dxm6")]
+position = Vector2(1207, 562)
+
+[node name="Floor3" parent="." unique_id=1042428448 instance=ExtResource("6_3dxm6")]
+position = Vector2(2014, 562)
+
+[node name="Cube" type="RigidBody2D" parent="." unique_id=109324797]
+position = Vector2(209, 438)
+collision_layer = 4
+collision_mask = 7
+mass = 1.209
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cube" unique_id=1133093659]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_hhk8p")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cube" unique_id=1748570651]
+texture = ExtResource("7_lgr22")
+
+[node name="Cube2" type="RigidBody2D" parent="." unique_id=146177801]
+position = Vector2(278, 439)
+collision_layer = 4
+collision_mask = 7
+mass = 1.209
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cube2" unique_id=738177933]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_hhk8p")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cube2" unique_id=167170385]
+texture = ExtResource("7_lgr22")
+
+[node name="Cube3" type="RigidBody2D" parent="." unique_id=1108951480]
+position = Vector2(244, 367)
+collision_layer = 4
+collision_mask = 7
+mass = 1.209
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cube3" unique_id=313491903]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_hhk8p")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cube3" unique_id=1037251762]
+texture = ExtResource("7_lgr22")
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=1211084016]
+position = Vector2(692, 379)
+collision_layer = 4
+collision_mask = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall" unique_id=290506594]
+position = Vector2(0, 34.999992)
+scale = Vector2(1, 2.0606055)
+texture = ExtResource("6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=1251576965]
+position = Vector2(0, 35)
+shape = SubResource("RectangleShape2D_tnhwq")

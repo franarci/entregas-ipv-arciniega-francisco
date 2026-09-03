@@ -1,19 +1,22 @@
-extends Sprite2D
+extends CharacterBody2D
 
 @onready var cannon: Node = $Cannon
 
 @export var ACCELERATION: float = 20.0
 @export var H_SPEED_LIMIT: float = 600.0
 @export var FRICTION_WEIGHT: float = 0.1
+@export var JUMP_SPEED: float = -100
+@export var GRAVITY: float = 2
+@export var PUSH_FORCE: float = 80
 
-var velocity: Vector2 = Vector2.ZERO
+
 var projectile_container: Node
 
-func initialize(projectile_container: Node) -> void:
-	self.projectile_container = projectile_container
-	cannon.projectile_container = projectile_container
+func initialize(p_projectile_container: Node) -> void:
+	self.projectile_container = p_projectile_container
+	cannon.projectile_container = p_projectile_container
 
-func _physics_process(delta: float) -> void:
+func _get_input():
 	# Cannon rotation
 	var mouse_position: Vector2 = get_global_mouse_position()
 	cannon.look_at(mouse_position)
@@ -39,5 +42,16 @@ func _physics_process(delta: float) -> void:
 	else:
 		# Ternary if: {true code} if {condition} else {false code}
 		velocity.x = lerp(velocity.x, 0.0, FRICTION_WEIGHT) if abs(velocity.x) > 1.0 else 0.0
+	if Input.is_action_just_pressed("Jump"):
+		velocity.y += JUMP_SPEED
 	
-	position += velocity * delta
+func _physics_process(_delta: float) -> void:
+	_get_input()
+	
+	velocity.y += GRAVITY
+	move_and_slide()
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D:
+			c.get_collider().apply_central_impulse(-get_wall_normal() * PUSH_FORCE)
+	#position += velocity * delta
