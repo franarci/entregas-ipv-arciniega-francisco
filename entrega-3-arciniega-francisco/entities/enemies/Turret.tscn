@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bscjwoaotlcqc"]
+
+[ext_resource type="Texture2D" uid="uid://c1umtbyikidk0" path="res://assets/textures/turret.png" id="1"]
+[ext_resource type="Script" uid="uid://b2s442tfjn5or" path="res://entities/enemies/Turret.gd" id="2"]
+[ext_resource type="PackedScene" path="res://entities/enemies/TurretProjectile.tscn" id="3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tnhwq"]
+radius = 300.06
+
+[node name="Turret" type="Sprite2D" unique_id=855599806]
+texture = ExtResource("1")
+script = ExtResource("2")
+projectile_scene = ExtResource("3")
+
+[node name="FireTimer" type="Timer" parent="." unique_id=447067707]
+
+[node name="FirePosition" type="Marker2D" parent="." unique_id=1393103405]
+position = Vector2(0, -30.0339)
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=553411480]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1393278281]
+shape = SubResource("CircleShape2D_tnhwq")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
