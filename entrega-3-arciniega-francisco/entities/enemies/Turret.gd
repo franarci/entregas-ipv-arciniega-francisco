@@ -1,4 +1,4 @@
-extends Sprite2D
+extends StaticBody2D
 
 @onready var fire_position: Node2D = $FirePosition
 @onready var fire_timer: Timer = $FireTimer
@@ -33,3 +33,10 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 
 func _on_detection_area_body_exited(_body: Node2D) -> void:
 	fire_timer.stop()
+
+func notify_hit():
+	print("Im turret and I'm hit")
+	_remove.call_deferred()
+func _remove() -> void:
+	get_parent().remove_child(self)
+	queue_free()

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://j14wrxanwhni" path="res://assets/textures/player.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://doiohr46lpdc7" path="res://assets/textures/cannon.png" id="3"]
 [ext_resource type="Script" uid="uid://dw1dbb5kq664d" path="res://entities/player/Cannon.gd" id="4"]
-[ext_resource type="PackedScene" path="res://entities/player/PlayerProjectile.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://ch87fcxyphs8s" path="res://entities/player/PlayerProjectile.tscn" id="5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_630k3"]
 radius = 29.0
