@@ -18,9 +18,9 @@ func _ready() -> void:
 	set_physics_process(false)
 
 
-func initialize(turret_pos: Vector2, projectile_container: Node) -> void:
+func initialize(turret_pos: Vector2, p_projectile_container: Node) -> void:
 	global_position = turret_pos
-	self.projectile_container = projectile_container
+	self.projectile_container = p_projectile_container
 
 
 func fire() -> void:
@@ -38,7 +38,7 @@ func fire() -> void:
 	fire_timer.start()
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	raycast.set_target_position(raycast.to_local(target.global_position))
 	if raycast.is_colliding() && raycast.get_collider() == target:
 		if fire_timer.is_stopped():

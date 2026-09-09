@@ -13,8 +13,8 @@ extends Node2D
 var direction: Vector2
 
 
-func initialize(spawn_position: Vector2, direction: Vector2) -> void:
-	self.direction = direction
+func initialize(spawn_position: Vector2, p_direction: Vector2) -> void:
+	self.direction = p_direction
 	global_position = spawn_position
 	rotation = direction.angle()
 	lifetime_timer.timeout.connect(_on_lifetime_timer_timeout)

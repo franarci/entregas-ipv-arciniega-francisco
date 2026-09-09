@@ -13,7 +13,7 @@ extends CharacterBody2D
 @export var H_SPEED_LIMIT: float = 600.0
 @export var jump_speed: int = 500
 @export var FRICTION_WEIGHT: float = 6.25 # Lo multiplicamos por delta, asi que es 0.1 / (1.0 / 60.0)
-@export var gravity: int = 625.0 # Lo multiplicamos por delta, asi que es 10.0 / (1.0 / 60.0)
+@export var gravity: int = 625 # Lo multiplicamos por delta, asi que es 10.0 / (1.0 / 60.0)
 @export var push_force: float = 80.0
 
 var projectile_container: Node
@@ -28,9 +28,9 @@ func _ready() -> void:
 	initialize()
 
 
-func initialize(projectile_container: Node = get_parent()) -> void:
-	self.projectile_container = projectile_container
-	weapon.projectile_container = projectile_container
+func initialize(p_projectile_container: Node = get_parent()) -> void:
+	self.projectile_container = p_projectile_container
+	weapon.projectile_container = p_projectile_container
 
 
 func _physics_process(delta: float) -> void:
