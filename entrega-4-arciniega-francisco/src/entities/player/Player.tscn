@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bg6s38wn8ss5x"]
+
+[ext_resource type="Script" uid="uid://tp4fxm4jsgcy" path="res://src/entities/player/Player.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://de1m14eyfnc8c" path="res://assets/textures/player/player_sheet.png" id="2_lvau8"]
+[ext_resource type="Texture2D" uid="uid://cxvdy8nrhcryn" path="res://assets/textures/cannon.png" id="3"]
+[ext_resource type="Script" uid="uid://bxm1bqpwq3bk5" path="res://src/entities/player/Cannon.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://dnl107pupmqic" path="res://src/entities/player/PlayerProjectile.tscn" id="5"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(11, 15)
+
+[node name="Player" type="CharacterBody2D" unique_id=698639276]
+collision_layer = 2
+collision_mask = 7
+floor_max_angle = 0.802851
+floor_snap_length = 16.0
+platform_floor_layers = 4294901761
+script = ExtResource("1")
+push_force = 160.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=843846872]
+position = Vector2(1.5, 3.5)
+shape = SubResource("1")
+
+[node name="BodyAnimations" type="AnimationPlayer" parent="." unique_id=938116024]
+
+[node name="Body" type="Sprite2D" parent="." unique_id=2067901148]
+position = Vector2(-0.0635071, 0.165405)
+texture = ExtResource("2_lvau8")
+hframes = 9
+vframes = 5
+
+[node name="WeaponContainer" type="Node2D" parent="." unique_id=439516033]
+visible = false
+
+[node name="Weapon" type="Sprite2D" parent="WeaponContainer" unique_id=1428999629]
+unique_name_in_owner = true
+position = Vector2(-0.0635071, 0.165405)
+texture = ExtResource("3")
+script = ExtResource("4")
+projectile_scene = ExtResource("5")
+
+[node name="WeaponTip" type="Marker2D" parent="WeaponContainer/Weapon" unique_id=305796967]
+position = Vector2(15, 0)
