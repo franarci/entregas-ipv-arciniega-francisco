@@ -56,3 +56,17 @@ func _physics_process(_delta: float) -> void:
 		if c.get_collider() is RigidBody2D:
 			c.get_collider().apply_central_impulse(-get_wall_normal() * PUSH_FORCE)
 	#position += velocity * delta
+func notify_hit():
+	print("Im player and I'm hit")
+	_remove.call_deferred()
+
+func _remove():
+	set_physics_process(false)
+	hide()
+	collision_layer = 0
+	
+	# No removemos la escena ya que:
+	# · Queremos poder reutilizar la escena del player a futuro (animacion de muerte, por ejemplo)
+	# · No sabemos qué dependencias pueden existir con el mismo, eliminarlo puede romperlas
+	#get_parent().remove_child(self)
+	#queue_free()

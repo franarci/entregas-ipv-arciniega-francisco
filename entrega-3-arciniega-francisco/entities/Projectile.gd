@@ -1,12 +1,16 @@
 extends Sprite2D
 
 @onready var lifetime_timer = $LifetimeTimer
-
+@onready var hitbox = $Hitbox
 @export var VELOCITY: float = 800.0
+@export var MASK: int = 0
 
 var direction:Vector2
-
+func _ready():
+	print("hitbox: ", hitbox)
 func initialize(container, spawn_position:Vector2, p_direction:Vector2):
+	if hitbox != null:
+		hitbox.collision_mask = MASK
 	container.add_child(self)
 	self.direction = p_direction
 	global_position = spawn_position
@@ -31,3 +35,10 @@ func _remove():
 	get_parent().remove_child(self)
 	queue_free()
 	
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body.has_method("notify_hit"):
+		body.notify_hit()
+	hitbox.collision_mask = 0
+	_remove.call_deferred()
