@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://bjvs4j2hmsmr0"]
+
+[ext_resource type="Texture2D" uid="uid://s4pcwii8c5ml" path="res://assets/textures/fx/bolt/fire_start.png" id="1_vsibb"]
+
+[resource]
+atlas = ExtResource("1_vsibb")
+region = Rect2(63, 48, 63, 48)

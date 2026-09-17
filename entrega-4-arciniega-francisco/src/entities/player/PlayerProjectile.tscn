@@ -1,0 +1,231 @@
+[gd_scene format=3 uid="uid://dnl107pupmqic"]
+
+[ext_resource type="PackedScene" uid="uid://cgadr55reetnl" path="res://src/entities/Projectile.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://co8s20ovtbbcc" path="res://assets/textures/fx/spark/fire_loop.png" id="2_1gsgs"]
+[ext_resource type="Texture2D" uid="uid://s4pcwii8c5ml" path="res://assets/textures/fx/bolt/fire_start.png" id="2_k560y"]
+[ext_resource type="Texture2D" uid="uid://bh5bb7f52ve4e" path="res://assets/textures/fx/hits/hits-2/playerbolt_hit.png" id="4_ka2wl"]
+
+[sub_resource type="Animation" id="Animation_1gsgs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bolt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_k560y"]
+resource_name = "fire_loop"
+length = 2.1333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bolt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.36666667, 0.73333335, 1.1, 1.4666667, 1.8333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_ka2wl"]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bolt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_3xva6"]
+resource_name = "hit"
+length = 0.6333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bolt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.16666667, 0.26666668, 0.36666667, 0.46666667, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14, 15, 16]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ka2wl"]
+_data = {
+&"RESET": SubResource("Animation_1gsgs"),
+&"fire_loop": SubResource("Animation_k560y"),
+&"fire_start": SubResource("Animation_ka2wl"),
+&"hit": SubResource("Animation_3xva6")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k560y"]
+atlas = ExtResource("2_k560y")
+region = Rect2(0, 0, 68, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gsgs"]
+atlas = ExtResource("2_k560y")
+region = Rect2(68, 0, 68, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka2wl"]
+atlas = ExtResource("2_k560y")
+region = Rect2(0, 48, 68, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xva6"]
+atlas = ExtResource("2_k560y")
+region = Rect2(68, 48, 68, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x7rd"]
+atlas = ExtResource("2_k560y")
+region = Rect2(0, 96, 68, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yptx2"]
+atlas = ExtResource("2_1gsgs")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x7xp"]
+atlas = ExtResource("2_1gsgs")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxsoe"]
+atlas = ExtResource("2_1gsgs")
+region = Rect2(0, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2lne"]
+atlas = ExtResource("2_1gsgs")
+region = Rect2(64, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f5x2"]
+atlas = ExtResource("2_1gsgs")
+region = Rect2(0, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmob7"]
+atlas = ExtResource("4_ka2wl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqwf7"]
+atlas = ExtResource("4_ka2wl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16v1e"]
+atlas = ExtResource("4_ka2wl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7p5i"]
+atlas = ExtResource("4_ka2wl")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0nsa"]
+atlas = ExtResource("4_ka2wl")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohpj4"]
+atlas = ExtResource("4_ka2wl")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hrer"]
+atlas = ExtResource("4_ka2wl")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7l84f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k560y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gsgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ka2wl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xva6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x7rd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yptx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x7xp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxsoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2lne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f5x2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmob7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqwf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16v1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7p5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0nsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohpj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hrer")
+}],
+"loop": 0,
+"name": &"bolt",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ka2wl"]
+size = Vector2(24.5, 8)
+
+[node name="PlayerProjectile" unique_id=807939448 instance=ExtResource("1")]
+VELOCITY = 200.0
+
+[node name="ProjectileAnimations" parent="." index="0" unique_id=1502678634]
+libraries/ = SubResource("AnimationLibrary_ka2wl")
+
+[node name="Bolt" type="AnimatedSprite2D" parent="." index="1" unique_id=674400382]
+position = Vector2(9.536743e-07, 0)
+scale = Vector2(0.674, 0.5)
+sprite_frames = SubResource("SpriteFrames_7l84f")
+animation = &"bolt"
+
+[node name="LifetimeTimer" parent="." index="2" unique_id=301058958]
+wait_time = 4.0
+
+[node name="HitTimer" parent="." index="3" unique_id=690325396]
+wait_time = 0.6
+
+[node name="Hitbox" parent="." index="4" unique_id=606407330]
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0" unique_id=309365428]
+position = Vector2(5.75, 0)
+shape = SubResource("RectangleShape2D_ka2wl")

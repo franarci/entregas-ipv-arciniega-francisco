@@ -1,0 +1,105 @@
+{
+	"textures": [
+		{
+			"image": "fire_start.png",
+			"size": {
+				"w": 144,
+				"h": 144
+			},
+			"sprites": [
+				{
+					"filename": "charged1.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 63,
+						"h": 48
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "charged2.png",
+					"region": {
+						"x": 63,
+						"y": 0,
+						"w": 63,
+						"h": 48
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "charged3.png",
+					"region": {
+						"x": 0,
+						"y": 48,
+						"w": 63,
+						"h": 48
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "charged4.png",
+					"region": {
+						"x": 63,
+						"y": 48,
+						"w": 63,
+						"h": 48
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "charged5.png",
+					"region": {
+						"x": 0,
+						"y": 96,
+						"w": 63,
+						"h": 48
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"animations": [
+		{
+			"name": "charged",
+			"frames": [
+				"charged1.png",
+				"charged2.png",
+				"charged3.png",
+				"charged4.png",
+				"charged5.png"
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.1",
+		"smartupdate": "$TexturePacker:SmartUpdate:41ef06ad9efc0d65094fcd8033a1825f:2759a3db55549e011b2a74fc4eef3fbe:76fe4c8491783a03862a47c1996e17e9$"
+	}
+}

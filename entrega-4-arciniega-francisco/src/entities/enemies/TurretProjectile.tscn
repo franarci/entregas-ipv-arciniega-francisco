@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://22mlxu8p1pyp"]
+
+[ext_resource type="PackedScene" uid="uid://cgadr55reetnl" path="res://src/entities/Projectile.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://dbf77w10mqv17" path="res://assets/textures/fx/waveform/waveform1.png" id="2_ndf8s"]
+[ext_resource type="Texture2D" uid="uid://is2pknplmiuo" path="res://assets/textures/fx/waveform/waveform2.png" id="3_sqjki"]
+[ext_resource type="Texture2D" uid="uid://cg53hr5x5bgje" path="res://assets/textures/fx/waveform/waveform3.png" id="4_pgqbs"]
+[ext_resource type="Texture2D" uid="uid://bmvfkowo3jxlu" path="res://assets/textures/fx/waveform/waveform4.png" id="5_qtwxn"]
+[ext_resource type="Texture2D" uid="uid://b4nld5a1ra3mi" path="res://assets/textures/fx/hits/hits-5/hits-5-1.png" id="8_26db8"]
+[ext_resource type="Texture2D" uid="uid://beopcm6qualau" path="res://assets/textures/fx/hits/hits-5/hits-5-2.png" id="9_jr6wp"]
+[ext_resource type="Texture2D" uid="uid://dlmcwa4yja5w6" path="res://assets/textures/fx/hits/hits-5/hits-5-3.png" id="10_kh4wb"]
+[ext_resource type="Texture2D" uid="uid://djhubwn2p3v4p" path="res://assets/textures/fx/hits/hits-5/hits-5-4.png" id="11_s2ysn"]
+[ext_resource type="Texture2D" uid="uid://brn5wexic0or4" path="res://assets/textures/fx/hits/hits-5/hits-5-5.png" id="12_b58a1"]
+[ext_resource type="Texture2D" uid="uid://5ir1ulj73vne" path="res://assets/textures/fx/hits/hits-5/hits-5-6.png" id="13_2tgpv"]
+[ext_resource type="Texture2D" uid="uid://dctvrogiwwlnd" path="res://assets/textures/fx/hits/hits-5/hits-5-7.png" id="14_2l6rk"]
+
+[sub_resource type="Animation" id="Animation_ndf8s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bolt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_1ei87"]
+resource_name = "fire_loop"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bolt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_sqjki"]
+resource_name = "fire_start"
+length = 0.36666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bolt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_pgqbs"]
+resource_name = "hit"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bolt:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.07870561, 0.16685589, 0.27546963, 0.3620458, 0.4564925, 0.53992045),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ei87"]
+_data = {
+&"RESET": SubResource("Animation_ndf8s"),
+&"fire_loop": SubResource("Animation_1ei87"),
+&"fire_start": SubResource("Animation_sqjki"),
+&"hit": SubResource("Animation_pgqbs")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uyr1p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ndf8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sqjki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pgqbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qtwxn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_26db8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jr6wp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_kh4wb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_s2ysn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_b58a1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2tgpv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2l6rk")
+}],
+"loop": 0,
+"name": &"bolt",
+"speed": 30.0
+}]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 8.0
+
+[node name="TurretProjectile" unique_id=1716737229 instance=ExtResource("1")]
+VELOCITY = 234.44
+
+[node name="ProjectileAnimations" parent="." index="0" unique_id=1502678634]
+libraries/ = SubResource("AnimationLibrary_1ei87")
+
+[node name="Bolt" type="AnimatedSprite2D" parent="." index="1" unique_id=1245115564]
+position = Vector2(-0.75, -1)
+scale = Vector2(0.621, 0.668)
+sprite_frames = SubResource("SpriteFrames_uyr1p")
+animation = &"bolt"
+
+[node name="LifetimeTimer" parent="." index="2" unique_id=301058958]
+wait_time = 3.0
+
+[node name="HitTimer" parent="." index="3" unique_id=690325396]
+wait_time = 0.6
+
+[node name="Hitbox" parent="." index="4" unique_id=606407330]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0" unique_id=52391766]
+shape = SubResource("1")
