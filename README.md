@@ -3,10 +3,10 @@
 ## Demo Entrega 1
   https://franarci.github.io/entrega-1-html/
 
-##Demo Entrega 2
+## Demo Entrega 2
   https://franarci.github.io/entrega-2-html/
 
-##Demo Entrega 3
+## Demo Entrega 3
   https://franarci.github.io/entrega-3-html/
 
 ## Demo Entrega 4
