@@ -1,0 +1,16 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+uid="uid://df7bv6x2114yd"
+path="res://.godot/imported/fire_start.tpsheet-6ab231b441a03754c7cd768bd376864d.res"
+
+[deps]
+
+files=["res://assets/textures/fx/bolt/fire_start.sprites/charged1.tres", "res://assets/textures/fx/bolt/fire_start.sprites/charged2.tres", "res://assets/textures/fx/bolt/fire_start.sprites/charged3.tres", "res://assets/textures/fx/bolt/fire_start.sprites/charged4.tres", "res://assets/textures/fx/bolt/fire_start.sprites/charged5.tres", "res://assets/textures/fx/bolt/fire_start.animations.tres"]
+
+source_file="res://assets/textures/fx/bolt/fire_start.tpsheet"
+dest_files=["res://.godot/imported/fire_start.tpsheet-6ab231b441a03754c7cd768bd376864d.res", "res://assets/textures/fx/bolt/fire_start.sprites/charged1.tres", "res://assets/textures/fx/bolt/fire_start.sprites/charged2.tres", "res://assets/textures/fx/bolt/fire_start.sprites/charged3.tres", "res://assets/textures/fx/bolt/fire_start.sprites/charged4.tres", "res://assets/textures/fx/bolt/fire_start.sprites/charged5.tres", "res://assets/textures/fx/bolt/fire_start.animations.tres"]
+
+[params]
+

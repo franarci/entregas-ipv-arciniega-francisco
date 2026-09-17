@@ -21,8 +21,12 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/viewport_width=800
-window/stretch/mode="2d"
+window/size/viewport_width=288
+window/size/viewport_height=162
+window/size/initial_position_type=4
+window/size/window_width_override=1366
+window/size/window_height_override=768
+window/stretch/mode="canvas_items"
 
 [input]
 

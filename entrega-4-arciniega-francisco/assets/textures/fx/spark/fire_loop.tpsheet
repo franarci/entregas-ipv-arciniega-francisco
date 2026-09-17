@@ -1,0 +1,105 @@
+{
+	"textures": [
+		{
+			"image": "fire_loop.png",
+			"size": {
+				"w": 128,
+				"h": 128
+			},
+			"sprites": [
+				{
+					"filename": "spark-preview1.png",
+					"region": {
+						"x": 0,
+						"y": 0,
+						"w": 63,
+						"h": 32
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "spark-preview2.png",
+					"region": {
+						"x": 63,
+						"y": 0,
+						"w": 63,
+						"h": 32
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "spark-preview3.png",
+					"region": {
+						"x": 0,
+						"y": 32,
+						"w": 63,
+						"h": 32
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "spark-preview4.png",
+					"region": {
+						"x": 63,
+						"y": 32,
+						"w": 63,
+						"h": 32
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				},
+				{
+					"filename": "spark-preview5.png",
+					"region": {
+						"x": 0,
+						"y": 64,
+						"w": 63,
+						"h": 32
+					},
+					"margin": {
+						"x": 0,
+						"y": 0,
+						"w": 0,
+						"h": 0
+					}
+				}
+			]
+		}
+	],
+	"animations": [
+		{
+			"name": "spark-preview",
+			"frames": [
+				"spark-preview1.png",
+				"spark-preview2.png",
+				"spark-preview3.png",
+				"spark-preview4.png",
+				"spark-preview5.png"
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "1.1",
+		"smartupdate": "$TexturePacker:SmartUpdate:a094213eb9b5aee4801fe57ac2de8f15:2450732abb395f1cd16f10558b53ead2:1effa39ba258567f8297a3c914f6ae19$"
+	}
+}

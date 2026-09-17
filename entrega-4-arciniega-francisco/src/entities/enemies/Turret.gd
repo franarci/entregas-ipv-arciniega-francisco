@@ -3,6 +3,8 @@ extends StaticBody2D
 @onready var fire_position: Node2D = $FirePosition
 @onready var fire_timer: Timer = $FireTimer
 @onready var raycast: RayCast2D = $RayCast2D
+@onready var body_anim: AnimatedSprite2D = $Body
+@onready var dying: Timer = $Dying
 
 @export var projectile_scene: PackedScene
 
@@ -15,8 +17,9 @@ var dead: bool = false
 
 func _ready() -> void:
 	fire_timer.timeout.connect(fire)
+	dying.timeout.connect(_remove)
 	set_physics_process(false)
-
+	_play_animation("idle")
 
 func initialize(turret_pos: Vector2, p_projectile_container: Node) -> void:
 	global_position = turret_pos
@@ -51,7 +54,9 @@ func _physics_process(_delta: float) -> void:
 ## colisiones con el mundo, pausa todo lo demás y ejecuta una animación de muerte
 func notify_hit() -> void:
 	print("I'm turret and imma die")
-
+	set_physics_process(false)
+	_play_animation("die")
+	dying.start()
 
 func _remove() -> void:
 	get_parent().remove_child(self)
@@ -79,4 +84,5 @@ func _on_animation_finished() -> void:
 ## Wrapper sobre el llamado a animación para tener un solo punto de entrada controlable
 ## (en el caso de que necesitemos expandir la lógica o debuggear, por ejemplo)
 func _play_animation(animation: String) -> void:
-	pass ## Acá debe ir la lógica de llamado a animaciones
+	if body_anim.sprite_frames.has_animation(animation):
+		body_anim.play(animation)

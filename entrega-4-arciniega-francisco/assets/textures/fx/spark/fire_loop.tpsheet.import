@@ -1,0 +1,16 @@
+[remap]
+
+importer="codeandweb.texturepacker_import_spritesheet"
+type="Resource"
+uid="uid://fj55xx1cvqvi"
+path="res://.godot/imported/fire_loop.tpsheet-57a30d807e62715877ea0b94883084e9.res"
+
+[deps]
+
+files=["res://assets/textures/fx/spark/fire_loop.sprites/spark-preview1.tres", "res://assets/textures/fx/spark/fire_loop.sprites/spark-preview2.tres", "res://assets/textures/fx/spark/fire_loop.sprites/spark-preview3.tres", "res://assets/textures/fx/spark/fire_loop.sprites/spark-preview4.tres", "res://assets/textures/fx/spark/fire_loop.sprites/spark-preview5.tres", "res://assets/textures/fx/spark/fire_loop.animations.tres"]
+
+source_file="res://assets/textures/fx/spark/fire_loop.tpsheet"
+dest_files=["res://.godot/imported/fire_loop.tpsheet-57a30d807e62715877ea0b94883084e9.res", "res://assets/textures/fx/spark/fire_loop.sprites/spark-preview1.tres", "res://assets/textures/fx/spark/fire_loop.sprites/spark-preview2.tres", "res://assets/textures/fx/spark/fire_loop.sprites/spark-preview3.tres", "res://assets/textures/fx/spark/fire_loop.sprites/spark-preview4.tres", "res://assets/textures/fx/spark/fire_loop.sprites/spark-preview5.tres", "res://assets/textures/fx/spark/fire_loop.animations.tres"]
+
+[params]
+

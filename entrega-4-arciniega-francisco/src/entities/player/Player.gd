@@ -8,6 +8,10 @@ extends CharacterBody2D
 ## ruta estática al mismo.
 ## https://docs.godotengine.org/es/stable/tutorials/scripting/scene_unique_nodes.html
 @onready var weapon: Node = $"%Weapon"
+@onready var body_animations: AnimationPlayer = $BodyAnimations
+@onready var body: Sprite2D = $Body
+#@onready var body_pivot: Node2D = $BodyPivot
+@onready var dying: Timer = $Dying
 
 @export var ACCELERATION: float = 3750.0 # Lo multiplicamos por delta, asi que es 60.0 / (1.0 / 60.0)
 @export var H_SPEED_LIMIT: float = 600.0
@@ -26,12 +30,12 @@ var dead: bool = false
 
 func _ready() -> void:
 	initialize()
-
+	dying.timeout.connect(_remove)
 
 func initialize(p_projectile_container: Node = get_parent()) -> void:
 	self.projectile_container = p_projectile_container
 	weapon.projectile_container = p_projectile_container
-
+	
 
 func _physics_process(delta: float) -> void:
 	_process_input()
@@ -45,14 +49,30 @@ func _physics_process(delta: float) -> void:
 			-H_SPEED_LIMIT,
 			H_SPEED_LIMIT
 		)
+		#body_animations.play("walk")
+		if h_movement_direction < 0:
+			#body.offset = Vector2(2,0)
+			body.flip_h = true
+		else:
+			body.flip_h = false
+			body.offset = Vector2(0,0)
 	else:
 		velocity.x = lerp(velocity.x, 0.0, FRICTION_WEIGHT * delta) if abs(velocity.x) > 1 else 0
+		#body_animations.play("idle")
 	
 	# Jump
 	# NO multiplicamos por delta ya que se aplica una sola vez
 	if jump and is_on_floor():
 		velocity.y -= jump_speed
 	
+	
+	if !(is_on_floor()):
+		_play_animation("jump")
+	elif h_movement_direction != 0:
+		_play_animation("walk")
+	else:
+		_play_animation("idle")
+		
 	# Gravity
 	# Multiplicamos por delta para que sea independiente del framerate
 	velocity.y += gravity * delta
@@ -99,16 +119,20 @@ func _process_input() -> void:
 
 func notify_hit() -> void:
 	print("I'm player and imma die")
-	_remove.call_deferred()
+	set_physics_process(false)
+	_play_animation("die")
+	dying.start()
 
 
 func _remove() -> void:
-	set_physics_process(false)
 	hide()
+	weapon.hide()
 	collision_layer = 0
 
 
 ## Wrapper sobre el llamado a animación para tener un solo punto de entrada controlable
 ## (en el caso de que necesitemos expandir la lógica o debuggear, por ejemplo)
 func _play_animation(animation: String) -> void:
-	pass ## Acá debe ir la lógica de llamado a animaciones
+	if body_animations.has_animation(animation):
+		body_animations.play(animation)
+	

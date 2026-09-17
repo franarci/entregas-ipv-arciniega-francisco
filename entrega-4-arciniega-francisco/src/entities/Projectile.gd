@@ -3,12 +3,14 @@
 ## funciones tales como gráficos, para que pueda manejarlo de
 ## manera independiente con su propia implementación
 extends Node2D
+@onready var bolt: AnimatedSprite2D = $Bolt
 
 @onready var lifetime_timer: Timer = $LifetimeTimer
 @onready var hitbox: Area2D = $Hitbox
 @onready var projectile_animations: AnimationPlayer = $ProjectileAnimations
 
 @export var VELOCITY: float = 800.0
+@onready var hit_timer: Timer = $HitTimer
 
 var direction: Vector2
 
@@ -18,6 +20,7 @@ func initialize(spawn_position: Vector2, p_direction: Vector2) -> void:
 	global_position = spawn_position
 	rotation = direction.angle()
 	lifetime_timer.timeout.connect(_on_lifetime_timer_timeout)
+	hit_timer.timeout.connect(_remove)
 	lifetime_timer.start()
 	
 	## Ahora definimos que la implementación de proyectiles usará un AnimationPlayer
@@ -39,17 +42,18 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_lifetime_timer_timeout() -> void:
-	remove()
+	_remove()
 
 
-func remove() -> void:
+func hit() -> void:
 	hitbox.collision_mask = 0
 	set_physics_process(false)
 	
 	## Acá, como hicimos con Turret y Player, delegamos la "muerte"
 	## a una animación de golpe.
 	projectile_animations.play("hit")
-
+	hit_timer.start()
+	
 
 ## Esta función se llamaría desde "hit" al terminar la animación
 func _remove() -> void:
@@ -60,4 +64,4 @@ func _remove() -> void:
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.has_method("notify_hit"):
 		body.notify_hit()
-	remove()
+	hit()
