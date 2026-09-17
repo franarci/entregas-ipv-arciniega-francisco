@@ -1,8 +1,5 @@
 # entregas-ipv-arciniega-francisco
 
-## Demo Entrega 1
-  https://franarci.github.io/entrega-1-html/
-
 ## Demo Entrega 2
   https://franarci.github.io/entrega-2-html/
 
