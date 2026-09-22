@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://xy65fxd50q6v"]
+
+[ext_resource type="Script" uid="uid://1cjmgssymms6" path="res://src/game/ui/GUIManager.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://tsc8enkwhq1k" path="res://assets/textures/ui/GUISprite.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("2")
+region = Rect2(18, 83, 59, 9)
+
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("2")
+region = Rect2(18, 67, 59, 9)
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("2")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("2")
+region = Rect2(16, 16, 16, 16)
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("1")
+fade_duration = 2.0
+fade_delay = 1.0
+
+[node name="StatsContainer" type="Control" parent="."]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="HpProgress1" type="TextureProgressBar" parent="StatsContainer"]
+unique_name_in_owner = true
+layout_mode = 0
+max_value = 10.0
+value = 5.0
+texture_under = SubResource("2")
+texture_progress = SubResource("3")
+
+[node name="HpProgress2" type="TextureProgressBar" parent="StatsContainer"]
+unique_name_in_owner = true
+layout_mode = 0
+max_value = 10.0
+value = 5.0
+fill_mode = 3
+texture_under = SubResource("4")
+texture_progress = SubResource("5")

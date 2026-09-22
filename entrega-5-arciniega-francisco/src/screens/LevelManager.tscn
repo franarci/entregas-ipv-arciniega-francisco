@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba6uwpdy60qt7"]
+
+[ext_resource type="PackedScene" uid="uid://875pni53x43l" path="res://src/game/levels/Level01.tscn" id="1"]
+[ext_resource type="Script" uid="uid://brgd3hh3aty45" path="res://src/screens/LevelManager.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://dvmamtf8jjujm" path="res://assets/textures/mouse/crosshair.png" id="3"]
+
+[node name="LevelManager" type="Node"]
+script = ExtResource("2")
+levels = Array[PackedScene]([ExtResource("1")])
+main_menu_scene_path = "res://src/screens/MainMenu.tscn"
+mouse_cursor = ExtResource("3")
+
+[node name="CurrentLevelContainer" type="Node" parent="."]

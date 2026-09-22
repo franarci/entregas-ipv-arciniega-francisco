@@ -1,0 +1,251 @@
+[gd_scene load_steps=23 format=4 uid="uid://b1avikl8fshvv"]
+
+[ext_resource type="Script" uid="uid://dr10w05dwxk25" path="res://src/screens/MainMenu.gd" id="1"]
+[ext_resource type="FontFile" path="res://assets/fonts/Default-Big.tres" id="2"]
+[ext_resource type="FontFile" path="res://assets/fonts/Default-Medium.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://ba6uwpdy60qt7" path="res://src/screens/LevelManager.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://bqyr8idg6ryul" path="res://src/game/environment/DefaultBackground.tscn" id="5"]
+[ext_resource type="Script" uid="uid://co6h5wydaiixd" path="res://src/screens/components/MouseCamera.gd" id="6"]
+[ext_resource type="TileSet" uid="uid://dvewglkioxu04" path="res://src/game/levels/tilesets/tileset_desert1.tres" id="7"]
+[ext_resource type="Texture2D" uid="uid://dhtokuwmgphp" path="res://assets/textures/player/player_sheet.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://ctbw2hewfmv5n" path="res://assets/textures/tileset/ruins/Dungeon Ruins Tileset Day.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://cnb73q0156ujd" path="res://assets/textures/mouse/pointer.png" id="10"]
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("8")
+region = Rect2(0, 0, 288, 160)
+
+[sub_resource type="Animation" id="6"]
+length = 0.001
+
+[sub_resource type="Animation" id="7"]
+resource_name = "idle"
+length = 0.9
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xif3j"]
+_data = {
+&"RESET": SubResource("6"),
+&"idle": SubResource("7")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tkluq"]
+texture = ExtResource("9")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+region_rect = Rect2(16, 16, 48, 48)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a078r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_t4mfc"]
+font = ExtResource("2")
+font_color = Color(1, 0.77254903, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xif3j"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.2509804)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5a1cm"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.62352943)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkec7"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.4392157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkluq"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0, 0, 0.2509804)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a078r"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0.5882353, 0.6392157, 0, 0.4)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1")
+level_manager_scene = ExtResource("4")
+mouse_cursor = ExtResource("10")
+
+[node name="DefaultBackground" parent="." instance=ExtResource("5")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+
+[node name="CharacterLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.05, 0)
+
+[node name="BackTilemap" type="TileMapLayer" parent="ParallaxBackground/CharacterLayer"]
+modulate = Color(0.6745098, 0.6745098, 0.6745098, 1)
+tile_map_data = PackedByteArray("AAD5/wIAAAACAAEAAAD5/wMAAAACAAEAAAD5/wQAAAACAAEAAAD5/wUAAAACAAEAAAD5/wYAAAACAAEAAAD5/wcAAAACAAEAAAD5/wgAAAACAAEAAAD5/wkAAAACAAEAAAD6/wIAAAACAAEAAAD6/wMAAAACAAEAAAD6/wQAAAACAAEAAAD6/wUAAAACAAEAAAD6/wYAAAACAAEAAAD6/wcAAAACAAEAAAD6/wgAAAACAAEAAAD6/wkAAAACAAEAAAD7/wIAAAACAAEAAAD7/wMAAAACAAEAAAD7/wQAAAACAAEAAAD7/wUAAAACAAEAAAD7/wYAAAACAAEAAAD7/wcAAAACAAEAAAD7/wgAAAACAAEAAAD7/wkAAAACAAEAAAAAAAIAAAACAAEAAAAAAAMAAAACAAEAAAAAAAQAAwAFAAUAAAAAAAYAAAACAAEAAAAAAAcAAAACAAEAAAAAAAgAAAACAAEAAAAAAAkAAAACAAEAAAABAAIAAAACAAEAAAABAAYAAAACAAEAAAABAAcAAAACAAEAAAABAAgAAAACAAEAAAABAAkAAAACAAEAAAACAAIAAAACAAEAAAACAAYAAAACAAEAAAACAAcAAAACAAEAAAACAAgAAAACAAEAAAACAAkAAAACAAEAAAADAAkAAAACAAEAAAAEAAkAAAACAAEAAAAFAAkAAAACAAEAAAAGAAkAAAACAAEAAAAHAAkAAAACAAEAAAAIAAkAAAACAAEAAAAJAAkAAAACAAEAAAAKAAkAAAACAAEAAAALAAkAAAACAAEAAAAMAAkAAAACAAEAAAAVAAIAAAACAAEAAAAVAAMAAAACAAEAAAAVAAQAAAACAAEAAAAVAAUAAAACAAEAAAAVAAYAAAACAAEAAAAVAAcAAAACAAEAAAAVAAgAAAACAAEAAAAVAAkAAAACAAEAAAACAAQAAwAFAAUAAAABAAUAAAAHAAAAAAABAAMAAAABAAIAAAADAAIAAwAJAAQAAAADAAQAAwAJAAQAAAADAAYAAwAJAAQAAAADAAgAAwAJAAQAAAAFAAIAAwAJAAQAAAAFAAQAAwAJAAQAAAAFAAYAAwAJAAQAAAAFAAgAAwAJAAQAAAAHAAgAAwAJAAQAAAAHAAYAAwAJAAQAAAAHAAQAAwAJAAQAAAAHAAIAAwAJAAQAAAAJAAIAAwAJAAQAAAAJAAQAAwAJAAQAAAAJAAYAAwAJAAQAAAAJAAgAAwAJAAQAAAD+/wgAAwAJAAQAAAD+/wYAAwAJAAQAAAD+/wQAAwAJAAQAAAD+/wIAAwAJAAQAAAD8/wIAAwAJAAQAAAD8/wQAAwAJAAQAAAD8/wYAAwAJAAQAAAANAAIAAAACAAEAAAANAAYAAAACAAEAAAANAAcAAQACABoAAAANAAkAAAACAAEAAAAOAAIAAAACAAEAAAAOAAkAAAACAAEAAAAPAAIAAAACAAEAAAAPAAkAAAACAAEAAAAQAAIAAAACAAEAAAAQAAMAAAACAAEAAAAQAAQAAAACAAEAAAAQAAUAAAAGAAIAAAAQAAkAAAACAAEAAAARAAIAAAACAAEAAAARAAMAAAACAAEAAAARAAQAAAACAAEAAAARAAUAAAACAAEAAAARAAkAAAACAAEAAAASAAIAAAACAAEAAAASAAMAAAACAAEAAAASAAQAAAACAAEAAAASAAUAAAACAAEAAAASAAYAAAACAAEAAAASAAcAAAACAAEAAAASAAgAAAACAAEAAAASAAkAAAACAAEAAAATAAIAAAACAAEAAAATAAMAAAACAAEAAAATAAQAAAACAAEAAAATAAUAAAACAAEAAAATAAYAAAACAAEAAAATAAcAAAACAAEAAAATAAgAAAACAAEAAAATAAkAAAACAAEAAAAUAAIAAAACAAEAAAAUAAMAAAACAAEAAAAUAAQAAAACAAEAAAAUAAUAAAACAAEAAAAUAAYAAAACAAEAAAAUAAcAAAACAAEAAAAUAAgAAAACAAEAAAAUAAkAAAACAAEAAAD8/wgAAwAJAAQAAAANAAQAAwAFAAUAAAAOAAgAAwAIAA4AAAARAAgAAAACAAEAAAARAAcAAAACAAEAAAAPAAcAAAAGAAIAAAAQAAcAAAACAAEAAAAOAAcAAAAAAAIAAAAOAAYAAAACAAEAAAAPAAYAAAAGAAAAAAAQAAYAAAAFAAEAAAARAAYAAAACAAEAAAALAAQAAwAFAAUAAAAMAAMAAAAFAAIAAAAMAAUAAAAHAAAAAAAPAAgAAAABAAAAAAAQAAgAAAACAAEAAAAOAAMAAAACAAEAAAAPAAMAAAACAAEAAAAPAAQAAAACAAEAAAAPAAUAAAAHAAEAAAAOAAUAAAACAAEAAAAOAAQAAAACAAEAAAALAAYAAAACAAEAAAAMAAYAAAACAAEAAAAMAAcAAAACAAEAAAAMAAgAAAACAAEAAAALAAgAAAACAAEAAAALAAcAAAACAAEAAAAMAAIAAAACAAEAAAALAAIAAAACAAEAAAA=")
+tile_set = ExtResource("7")
+
+[node name="Ground" type="TileMapLayer" parent="ParallaxBackground/CharacterLayer"]
+position = Vector2(0, -6)
+tile_map_data = PackedByteArray("AAAAAAoAMQACAAEAAAD//woAMQACAAEAAAD+/woAMQACAAEAAAD9/woAMQACAAEAAAD8/woAMQACAAEAAAD7/woAMQACAAEAAAD6/woAMQACAAEAAAD5/woAMQACAAEAAAD4/woAMQAFAAAAAAD5/wsAMQABAAIAAAD4/wsAMQAAAAIAAAD4/wkAMQABAAMAAAD5/wkAMQAHAAAAAAD6/wsAMQABAAIAAAD6/wkAMQADAAAAAAD7/wsAMQAFAAIAAAD7/wkAMQAHAAAAAAD8/wsAMQAFAAIAAAD8/wkAMQAHAAAAAAD9/wsAMQABAAIAAAD9/wkAMQADAAAAAAD+/wsAMQAFAAIAAAD+/wkAMQADAAAAAAD//wsAMQABAAIAAAD//wkAMQAHAAAAAAAAAAsAMQAFAAIAAAAAAAkAMQADAAAAAAAWAAoAMQADAAIAAAAVAAoAMQACAAEAAAAUAAoAMQACAAEAAAATAAoAMQACAAEAAAASAAoAMQACAAEAAAARAAoAMQACAAEAAAAQAAoAMQACAAEAAAAPAAoAMQACAAEAAAAOAAoAMQACAAEAAAANAAoAMQACAAEAAAAMAAoAMQACAAEAAAALAAoAMQACAAEAAAAKAAoAMQACAAEAAAAJAAoAMQACAAEAAAAIAAoAMQACAAEAAAAHAAoAMQACAAEAAAAGAAoAMQACAAEAAAAFAAoAMQACAAEAAAAEAAoAMQACAAEAAAADAAoAMQACAAEAAAACAAoAMQACAAEAAAABAAoAMQACAAEAAAABAAsAMQABAAIAAAABAAkAMQADAAAAAAACAAsAMQABAAIAAAACAAkAMQADAAAAAAADAAsAMQABAAIAAAADAAkAMQADAAAAAAAEAAsAMQABAAIAAAAEAAkAMQADAAAAAAAFAAsAMQABAAIAAAAGAAsAMQABAAIAAAAGAAkAMQADAAAAAAAHAAsAMQAFAAIAAAAHAAkAMQADAAAAAAAIAAsAMQAFAAIAAAAIAAkAMQADAAAAAAAJAAsAMQAFAAIAAAAJAAkAMQADAAAAAAAKAAsAMQAFAAIAAAAKAAkAMQAHAAAAAAALAAsAMQAFAAIAAAALAAkAMQADAAAAAAAMAAsAMQAFAAIAAAAMAAkAMQADAAAAAAANAAsAMQABAAIAAAANAAkAMQAHAAAAAAAOAAsAMQABAAIAAAAOAAkAMQADAAAAAAAPAAsAMQABAAIAAAAPAAkAMQADAAAAAAAQAAsAMQABAAIAAAAQAAkAMQAHAAAAAAARAAsAMQABAAIAAAARAAkAMQAHAAAAAAASAAsAMQAFAAIAAAASAAkAMQADAAAAAAATAAsAMQABAAIAAAATAAkAMQADAAAAAAAUAAsAMQABAAIAAAAUAAkAMQAHAAAAAAAVAAsAMQAFAAIAAAAVAAkAMQADAAAAAAAWAAsAMQADAAMAAAAWAAkAMQAAAAAAAAAFAAkAMQADAAAAAAABAAMAAwAXAAAAAAACAAMAAwAKAAwAAAAHAAMAAwAXAAAAAAA=")
+tile_set = ExtResource("7")
+
+[node name="Environment" type="TileMapLayer" parent="ParallaxBackground/CharacterLayer"]
+tile_map_data = PackedByteArray("AAAFAAgAAwAYAAAAAAABAAcAAwAFAAEAAAACAAcAAwAXAAAAAAAAAAMAAwAUAAAAAAAGAAIAMQADAAEAAAAHAAIAMQAFAAIAAAAGAAMAMQAHAAMAAAAFAAMAMQABAAIAAAAFAAIAMQACAAEAAAAFAAEAMQACAAEAAAAGAAEAMQACAAEAAAAHAAEAMQACAAEAAAAEAAIAMQAGAAIAAAADAAIAMQAFAAIAAAADAAEAMQACAAEAAAAEAAEAMQACAAEAAAAEAAMAMQAAAAIAAAACAAEAMQACAAEAAAACAAIAMQAFAAIAAAACAAAAMQACAAEAAAADAAAAMQACAAEAAAAEAAAAMQACAAEAAAAVAAEAMQADAAEAAAAVAAAAMQACAAEAAAAVAP//MQACAAAAAAAUAAEAMQACAAEAAAAUAAAAMQACAAEAAAAUAP//MQACAAEAAAATAAEAMQACAAEAAAATAAAAMQACAAEAAAATAP//MQACAAEAAAASAAEAMQACAAEAAAASAAAAMQACAAEAAAASAP//MQACAAEAAAARAAEAMQACAAEAAAARAAAAMQACAAEAAAARAP//MQACAAEAAAAQAAEAMQACAAEAAAAQAAAAMQACAAEAAAAQAP//MQACAAEAAAAPAAEAMQACAAEAAAAPAAAAMQACAAEAAAAPAP//MQACAAEAAAAOAAEAMQACAAEAAAAOAAAAMQACAAEAAAAOAP//MQACAAEAAAANAAEAMQACAAEAAAANAAAAMQACAAEAAAANAP//MQACAAEAAAAMAAEAMQACAAEAAAAMAAAAMQACAAEAAAAMAP//MQACAAEAAAALAAEAMQACAAEAAAALAAAAMQACAAEAAAALAP//MQACAAEAAAAKAAEAMQACAAEAAAAKAAAAMQACAAEAAAAKAP//MQACAAEAAAAJAAEAMQACAAEAAAAJAAAAMQACAAEAAAAJAP//MQACAAEAAAAIAAEAMQACAAEAAAAIAAAAMQACAAEAAAAIAP//MQACAAEAAAAHAAAAMQACAAEAAAAHAP//MQACAAEAAAAGAAAAMQACAAEAAAAGAP//MQACAAEAAAAFAAAAMQACAAEAAAAFAP//MQACAAEAAAAEAP//MQACAAEAAAADAP//MQACAAEAAAACAP//MQACAAEAAAABAAEAMQACAAEAAAABAAAAMQACAAEAAAABAP//MQACAAEAAAAAAAEAMQACAAEAAAAAAAAAMQACAAEAAAAAAP//MQACAAEAAAD//wEAMQACAAEAAAD//wAAMQACAAEAAAD/////MQACAAEAAAD+/wEAMQACAAEAAAD+/wAAMQACAAEAAAD+////MQACAAEAAAD9/wEAMQACAAEAAAD9/wAAMQACAAEAAAD9////MQACAAEAAAD8/wEAMQACAAEAAAD8/wAAMQACAAEAAAD8////MQACAAEAAAD7/wEAMQACAAEAAAD7/wAAMQACAAEAAAD7////MQACAAEAAAD6/wEAMQACAAEAAAD6/wAAMQACAAEAAAD6////MQACAAEAAAD5/wEAMQACAAIAAAD5/wAAMQACAAEAAAD5////MQAFAAEAAAD4/wAAMQAFAAAAAAD4////MQABAAMAAAD5//7/MQAFAAMAAAD6//7/MQAHAAAAAAD4/wEAMQAAAAIAAAD6/wIAMQABAAIAAAD5/wIAMQAAAAIAAAD7//7/MQAHAAAAAAD7/wIAMQAFAAIAAAD8//7/MQAHAAAAAAD8/wIAMQABAAIAAAD9//7/MQADAAAAAAD9/wIAMQAFAAIAAAD+//7/MQAHAAAAAAD+/wIAMQAFAAIAAAD///7/MQAHAAAAAAD//wIAMQAFAAIAAAAAAP7/MQADAAAAAAAAAAIAMQAFAAIAAAABAP7/MQADAAAAAAABAAIAMQAFAAIAAAACAP7/MQADAAAAAAADAP7/MQADAAAAAAAEAP7/MQAHAAAAAAAFAP7/MQADAAAAAAAGAP7/MQAHAAAAAAAHAP7/MQADAAAAAAAIAP7/MQADAAAAAAAIAAIAMQABAAIAAAAJAP7/MQADAAAAAAAJAAIAMQAFAAIAAAAKAP7/MQAHAAAAAAAKAAIAMQAFAAIAAAALAP7/MQADAAAAAAALAAIAMQAFAAIAAAAMAP7/MQADAAAAAAAMAAIAMQAFAAIAAAANAP7/MQAHAAAAAAANAAIAMQABAAIAAAAOAP7/MQAHAAAAAAAOAAIAMQAFAAIAAAAPAP7/MQAHAAAAAAAPAAIAMQAFAAIAAAAQAP7/MQAHAAAAAAAQAAIAMQAFAAIAAAARAP7/MQAHAAAAAAARAAIAMQAFAAIAAAASAP7/MQAHAAAAAAASAAIAMQABAAIAAAATAP7/MQAHAAAAAAATAAIAMQAFAAIAAAAUAP7/MQADAAAAAAAUAAIAMQAFAAIAAAAVAP7/MQAAAAAAAAAVAAIAMQADAAMAAAAWAP//MQAAAAAAAAAWAAAAMQAHAAIAAAAWAAEAMQAHAAMAAAAIAAgAAwABAAcAAAANAAgAAwAIAAkAAAAPAAgAAwAKAAgAAAA=")
+tile_set = ExtResource("7")
+
+[node name="Body" type="Sprite2D" parent="ParallaxBackground/CharacterLayer"]
+unique_name_in_owner = true
+position = Vector2(138, 117)
+texture = SubResource("2")
+hframes = 9
+vframes = 5
+frame = 2
+
+[node name="BodyAnimations" type="AnimationPlayer" parent="ParallaxBackground/CharacterLayer/Body"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_xif3j")
+}
+autoplay = "idle"
+
+[node name="TitlePivot" type="Node2D" parent="ParallaxBackground/CharacterLayer"]
+position = Vector2(144, 24)
+
+[node name="MarginContainer" type="MarginContainer" parent="ParallaxBackground/CharacterLayer/TitlePivot"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="ParallaxBackground/CharacterLayer/TitlePivot/MarginContainer"]
+self_modulate = Color(0.823529, 0.823529, 0.823529, 1)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_tkluq")
+
+[node name="Title" type="Label" parent="ParallaxBackground/CharacterLayer/TitlePivot/MarginContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_a078r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a078r")
+text = "REPLACE THIS NAME"
+label_settings = SubResource("LabelSettings_t4mfc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MouseCamera" type="Camera2D" parent="."]
+position = Vector2(144, 81)
+position_smoothing_enabled = true
+script = ExtResource("6")
+movement_strength = 0.25
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Container" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttons" type="VBoxContainer" parent="CanvasLayer/Container"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 11.0
+offset_top = -6.0
+offset_right = 102.0
+offset_bottom = 44.0
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="StartButton" type="Button" parent="CanvasLayer/Container/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xif3j")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_xif3j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5a1cm")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_5a1cm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_tkluq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_tkluq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a078r")
+text = "Start"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/Container/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xif3j")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_xif3j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5a1cm")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_5a1cm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_tkluq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_tkluq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a078r")
+text = "Exit"
+
+[connection signal="pressed" from="CanvasLayer/Container/Buttons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Container/Buttons/ExitButton" to="." method="_on_exit_button_pressed"]
