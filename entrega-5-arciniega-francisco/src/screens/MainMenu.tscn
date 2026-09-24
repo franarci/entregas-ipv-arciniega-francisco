@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://b1avikl8fshvv"]
+[gd_scene format=4 uid="uid://b1avikl8fshvv"]
 
 [ext_resource type="Script" uid="uid://dr10w05dwxk25" path="res://src/screens/MainMenu.gd" id="1"]
 [ext_resource type="FontFile" path="res://assets/fonts/Default-Big.tres" id="2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dhtokuwmgphp" path="res://assets/textures/player/player_sheet.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://ctbw2hewfmv5n" path="res://assets/textures/tileset/ruins/Dungeon Ruins Tileset Day.png" id="9"]
 [ext_resource type="Texture2D" uid="uid://cnb73q0156ujd" path="res://assets/textures/mouse/pointer.png" id="10"]
+[ext_resource type="PackedScene" uid="uid://vhkng747ncb1" path="res://src/game/ui/Options/OptionsMenu.tscn" id="10_tkluq"]
 
 [sub_resource type="AtlasTexture" id="2"]
 atlas = ExtResource("8")
@@ -60,7 +61,7 @@ region_rect = Rect2(16, 16, 48, 48)
 font = ExtResource("2")
 font_color = Color(1, 0.77254903, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xif3j"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a078r"]
 content_margin_left = 5.0
 content_margin_top = 3.0
 content_margin_right = 5.0
@@ -72,7 +73,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5a1cm"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4mfc"]
 content_margin_left = 5.0
 content_margin_top = 3.0
 content_margin_right = 5.0
@@ -84,7 +85,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkec7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxlw4"]
 content_margin_left = 5.0
 content_margin_top = 3.0
 content_margin_right = 5.0
@@ -96,7 +97,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkluq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vyve6"]
 content_margin_left = 5.0
 content_margin_top = 3.0
 content_margin_right = 5.0
@@ -108,7 +109,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a078r"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_047xu"]
 content_margin_left = 5.0
 content_margin_top = 3.0
 content_margin_right = 5.0
@@ -120,34 +121,34 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
 
-[node name="MainMenu" type="Node"]
+[node name="MainMenu" type="Node" unique_id=961007605]
 script = ExtResource("1")
 level_manager_scene = ExtResource("4")
 mouse_cursor = ExtResource("10")
 
-[node name="DefaultBackground" parent="." instance=ExtResource("5")]
+[node name="DefaultBackground" parent="." unique_id=1790125462 instance=ExtResource("5")]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=455993774]
 scroll_ignore_camera_zoom = true
 
-[node name="CharacterLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="CharacterLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=633422044]
 motion_scale = Vector2(0.05, 0)
 
-[node name="BackTilemap" type="TileMapLayer" parent="ParallaxBackground/CharacterLayer"]
+[node name="BackTilemap" type="TileMapLayer" parent="ParallaxBackground/CharacterLayer" unique_id=1153649524]
 modulate = Color(0.6745098, 0.6745098, 0.6745098, 1)
 tile_map_data = PackedByteArray("AAD5/wIAAAACAAEAAAD5/wMAAAACAAEAAAD5/wQAAAACAAEAAAD5/wUAAAACAAEAAAD5/wYAAAACAAEAAAD5/wcAAAACAAEAAAD5/wgAAAACAAEAAAD5/wkAAAACAAEAAAD6/wIAAAACAAEAAAD6/wMAAAACAAEAAAD6/wQAAAACAAEAAAD6/wUAAAACAAEAAAD6/wYAAAACAAEAAAD6/wcAAAACAAEAAAD6/wgAAAACAAEAAAD6/wkAAAACAAEAAAD7/wIAAAACAAEAAAD7/wMAAAACAAEAAAD7/wQAAAACAAEAAAD7/wUAAAACAAEAAAD7/wYAAAACAAEAAAD7/wcAAAACAAEAAAD7/wgAAAACAAEAAAD7/wkAAAACAAEAAAAAAAIAAAACAAEAAAAAAAMAAAACAAEAAAAAAAQAAwAFAAUAAAAAAAYAAAACAAEAAAAAAAcAAAACAAEAAAAAAAgAAAACAAEAAAAAAAkAAAACAAEAAAABAAIAAAACAAEAAAABAAYAAAACAAEAAAABAAcAAAACAAEAAAABAAgAAAACAAEAAAABAAkAAAACAAEAAAACAAIAAAACAAEAAAACAAYAAAACAAEAAAACAAcAAAACAAEAAAACAAgAAAACAAEAAAACAAkAAAACAAEAAAADAAkAAAACAAEAAAAEAAkAAAACAAEAAAAFAAkAAAACAAEAAAAGAAkAAAACAAEAAAAHAAkAAAACAAEAAAAIAAkAAAACAAEAAAAJAAkAAAACAAEAAAAKAAkAAAACAAEAAAALAAkAAAACAAEAAAAMAAkAAAACAAEAAAAVAAIAAAACAAEAAAAVAAMAAAACAAEAAAAVAAQAAAACAAEAAAAVAAUAAAACAAEAAAAVAAYAAAACAAEAAAAVAAcAAAACAAEAAAAVAAgAAAACAAEAAAAVAAkAAAACAAEAAAACAAQAAwAFAAUAAAABAAUAAAAHAAAAAAABAAMAAAABAAIAAAADAAIAAwAJAAQAAAADAAQAAwAJAAQAAAADAAYAAwAJAAQAAAADAAgAAwAJAAQAAAAFAAIAAwAJAAQAAAAFAAQAAwAJAAQAAAAFAAYAAwAJAAQAAAAFAAgAAwAJAAQAAAAHAAgAAwAJAAQAAAAHAAYAAwAJAAQAAAAHAAQAAwAJAAQAAAAHAAIAAwAJAAQAAAAJAAIAAwAJAAQAAAAJAAQAAwAJAAQAAAAJAAYAAwAJAAQAAAAJAAgAAwAJAAQAAAD+/wgAAwAJAAQAAAD+/wYAAwAJAAQAAAD+/wQAAwAJAAQAAAD+/wIAAwAJAAQAAAD8/wIAAwAJAAQAAAD8/wQAAwAJAAQAAAD8/wYAAwAJAAQAAAANAAIAAAACAAEAAAANAAYAAAACAAEAAAANAAcAAQACABoAAAANAAkAAAACAAEAAAAOAAIAAAACAAEAAAAOAAkAAAACAAEAAAAPAAIAAAACAAEAAAAPAAkAAAACAAEAAAAQAAIAAAACAAEAAAAQAAMAAAACAAEAAAAQAAQAAAACAAEAAAAQAAUAAAAGAAIAAAAQAAkAAAACAAEAAAARAAIAAAACAAEAAAARAAMAAAACAAEAAAARAAQAAAACAAEAAAARAAUAAAACAAEAAAARAAkAAAACAAEAAAASAAIAAAACAAEAAAASAAMAAAACAAEAAAASAAQAAAACAAEAAAASAAUAAAACAAEAAAASAAYAAAACAAEAAAASAAcAAAACAAEAAAASAAgAAAACAAEAAAASAAkAAAACAAEAAAATAAIAAAACAAEAAAATAAMAAAACAAEAAAATAAQAAAACAAEAAAATAAUAAAACAAEAAAATAAYAAAACAAEAAAATAAcAAAACAAEAAAATAAgAAAACAAEAAAATAAkAAAACAAEAAAAUAAIAAAACAAEAAAAUAAMAAAACAAEAAAAUAAQAAAACAAEAAAAUAAUAAAACAAEAAAAUAAYAAAACAAEAAAAUAAcAAAACAAEAAAAUAAgAAAACAAEAAAAUAAkAAAACAAEAAAD8/wgAAwAJAAQAAAANAAQAAwAFAAUAAAAOAAgAAwAIAA4AAAARAAgAAAACAAEAAAARAAcAAAACAAEAAAAPAAcAAAAGAAIAAAAQAAcAAAACAAEAAAAOAAcAAAAAAAIAAAAOAAYAAAACAAEAAAAPAAYAAAAGAAAAAAAQAAYAAAAFAAEAAAARAAYAAAACAAEAAAALAAQAAwAFAAUAAAAMAAMAAAAFAAIAAAAMAAUAAAAHAAAAAAAPAAgAAAABAAAAAAAQAAgAAAACAAEAAAAOAAMAAAACAAEAAAAPAAMAAAACAAEAAAAPAAQAAAACAAEAAAAPAAUAAAAHAAEAAAAOAAUAAAACAAEAAAAOAAQAAAACAAEAAAALAAYAAAACAAEAAAAMAAYAAAACAAEAAAAMAAcAAAACAAEAAAAMAAgAAAACAAEAAAALAAgAAAACAAEAAAALAAcAAAACAAEAAAAMAAIAAAACAAEAAAALAAIAAAACAAEAAAA=")
 tile_set = ExtResource("7")
 
-[node name="Ground" type="TileMapLayer" parent="ParallaxBackground/CharacterLayer"]
+[node name="Ground" type="TileMapLayer" parent="ParallaxBackground/CharacterLayer" unique_id=2000843863]
 position = Vector2(0, -6)
 tile_map_data = PackedByteArray("AAAAAAoAMQACAAEAAAD//woAMQACAAEAAAD+/woAMQACAAEAAAD9/woAMQACAAEAAAD8/woAMQACAAEAAAD7/woAMQACAAEAAAD6/woAMQACAAEAAAD5/woAMQACAAEAAAD4/woAMQAFAAAAAAD5/wsAMQABAAIAAAD4/wsAMQAAAAIAAAD4/wkAMQABAAMAAAD5/wkAMQAHAAAAAAD6/wsAMQABAAIAAAD6/wkAMQADAAAAAAD7/wsAMQAFAAIAAAD7/wkAMQAHAAAAAAD8/wsAMQAFAAIAAAD8/wkAMQAHAAAAAAD9/wsAMQABAAIAAAD9/wkAMQADAAAAAAD+/wsAMQAFAAIAAAD+/wkAMQADAAAAAAD//wsAMQABAAIAAAD//wkAMQAHAAAAAAAAAAsAMQAFAAIAAAAAAAkAMQADAAAAAAAWAAoAMQADAAIAAAAVAAoAMQACAAEAAAAUAAoAMQACAAEAAAATAAoAMQACAAEAAAASAAoAMQACAAEAAAARAAoAMQACAAEAAAAQAAoAMQACAAEAAAAPAAoAMQACAAEAAAAOAAoAMQACAAEAAAANAAoAMQACAAEAAAAMAAoAMQACAAEAAAALAAoAMQACAAEAAAAKAAoAMQACAAEAAAAJAAoAMQACAAEAAAAIAAoAMQACAAEAAAAHAAoAMQACAAEAAAAGAAoAMQACAAEAAAAFAAoAMQACAAEAAAAEAAoAMQACAAEAAAADAAoAMQACAAEAAAACAAoAMQACAAEAAAABAAoAMQACAAEAAAABAAsAMQABAAIAAAABAAkAMQADAAAAAAACAAsAMQABAAIAAAACAAkAMQADAAAAAAADAAsAMQABAAIAAAADAAkAMQADAAAAAAAEAAsAMQABAAIAAAAEAAkAMQADAAAAAAAFAAsAMQABAAIAAAAGAAsAMQABAAIAAAAGAAkAMQADAAAAAAAHAAsAMQAFAAIAAAAHAAkAMQADAAAAAAAIAAsAMQAFAAIAAAAIAAkAMQADAAAAAAAJAAsAMQAFAAIAAAAJAAkAMQADAAAAAAAKAAsAMQAFAAIAAAAKAAkAMQAHAAAAAAALAAsAMQAFAAIAAAALAAkAMQADAAAAAAAMAAsAMQAFAAIAAAAMAAkAMQADAAAAAAANAAsAMQABAAIAAAANAAkAMQAHAAAAAAAOAAsAMQABAAIAAAAOAAkAMQADAAAAAAAPAAsAMQABAAIAAAAPAAkAMQADAAAAAAAQAAsAMQABAAIAAAAQAAkAMQAHAAAAAAARAAsAMQABAAIAAAARAAkAMQAHAAAAAAASAAsAMQAFAAIAAAASAAkAMQADAAAAAAATAAsAMQABAAIAAAATAAkAMQADAAAAAAAUAAsAMQABAAIAAAAUAAkAMQAHAAAAAAAVAAsAMQAFAAIAAAAVAAkAMQADAAAAAAAWAAsAMQADAAMAAAAWAAkAMQAAAAAAAAAFAAkAMQADAAAAAAABAAMAAwAXAAAAAAACAAMAAwAKAAwAAAAHAAMAAwAXAAAAAAA=")
 tile_set = ExtResource("7")
 
-[node name="Environment" type="TileMapLayer" parent="ParallaxBackground/CharacterLayer"]
+[node name="Environment" type="TileMapLayer" parent="ParallaxBackground/CharacterLayer" unique_id=548574419]
 tile_map_data = PackedByteArray("AAAFAAgAAwAYAAAAAAABAAcAAwAFAAEAAAACAAcAAwAXAAAAAAAAAAMAAwAUAAAAAAAGAAIAMQADAAEAAAAHAAIAMQAFAAIAAAAGAAMAMQAHAAMAAAAFAAMAMQABAAIAAAAFAAIAMQACAAEAAAAFAAEAMQACAAEAAAAGAAEAMQACAAEAAAAHAAEAMQACAAEAAAAEAAIAMQAGAAIAAAADAAIAMQAFAAIAAAADAAEAMQACAAEAAAAEAAEAMQACAAEAAAAEAAMAMQAAAAIAAAACAAEAMQACAAEAAAACAAIAMQAFAAIAAAACAAAAMQACAAEAAAADAAAAMQACAAEAAAAEAAAAMQACAAEAAAAVAAEAMQADAAEAAAAVAAAAMQACAAEAAAAVAP//MQACAAAAAAAUAAEAMQACAAEAAAAUAAAAMQACAAEAAAAUAP//MQACAAEAAAATAAEAMQACAAEAAAATAAAAMQACAAEAAAATAP//MQACAAEAAAASAAEAMQACAAEAAAASAAAAMQACAAEAAAASAP//MQACAAEAAAARAAEAMQACAAEAAAARAAAAMQACAAEAAAARAP//MQACAAEAAAAQAAEAMQACAAEAAAAQAAAAMQACAAEAAAAQAP//MQACAAEAAAAPAAEAMQACAAEAAAAPAAAAMQACAAEAAAAPAP//MQACAAEAAAAOAAEAMQACAAEAAAAOAAAAMQACAAEAAAAOAP//MQACAAEAAAANAAEAMQACAAEAAAANAAAAMQACAAEAAAANAP//MQACAAEAAAAMAAEAMQACAAEAAAAMAAAAMQACAAEAAAAMAP//MQACAAEAAAALAAEAMQACAAEAAAALAAAAMQACAAEAAAALAP//MQACAAEAAAAKAAEAMQACAAEAAAAKAAAAMQACAAEAAAAKAP//MQACAAEAAAAJAAEAMQACAAEAAAAJAAAAMQACAAEAAAAJAP//MQACAAEAAAAIAAEAMQACAAEAAAAIAAAAMQACAAEAAAAIAP//MQACAAEAAAAHAAAAMQACAAEAAAAHAP//MQACAAEAAAAGAAAAMQACAAEAAAAGAP//MQACAAEAAAAFAAAAMQACAAEAAAAFAP//MQACAAEAAAAEAP//MQACAAEAAAADAP//MQACAAEAAAACAP//MQACAAEAAAABAAEAMQACAAEAAAABAAAAMQACAAEAAAABAP//MQACAAEAAAAAAAEAMQACAAEAAAAAAAAAMQACAAEAAAAAAP//MQACAAEAAAD//wEAMQACAAEAAAD//wAAMQACAAEAAAD/////MQACAAEAAAD+/wEAMQACAAEAAAD+/wAAMQACAAEAAAD+////MQACAAEAAAD9/wEAMQACAAEAAAD9/wAAMQACAAEAAAD9////MQACAAEAAAD8/wEAMQACAAEAAAD8/wAAMQACAAEAAAD8////MQACAAEAAAD7/wEAMQACAAEAAAD7/wAAMQACAAEAAAD7////MQACAAEAAAD6/wEAMQACAAEAAAD6/wAAMQACAAEAAAD6////MQACAAEAAAD5/wEAMQACAAIAAAD5/wAAMQACAAEAAAD5////MQAFAAEAAAD4/wAAMQAFAAAAAAD4////MQABAAMAAAD5//7/MQAFAAMAAAD6//7/MQAHAAAAAAD4/wEAMQAAAAIAAAD6/wIAMQABAAIAAAD5/wIAMQAAAAIAAAD7//7/MQAHAAAAAAD7/wIAMQAFAAIAAAD8//7/MQAHAAAAAAD8/wIAMQABAAIAAAD9//7/MQADAAAAAAD9/wIAMQAFAAIAAAD+//7/MQAHAAAAAAD+/wIAMQAFAAIAAAD///7/MQAHAAAAAAD//wIAMQAFAAIAAAAAAP7/MQADAAAAAAAAAAIAMQAFAAIAAAABAP7/MQADAAAAAAABAAIAMQAFAAIAAAACAP7/MQADAAAAAAADAP7/MQADAAAAAAAEAP7/MQAHAAAAAAAFAP7/MQADAAAAAAAGAP7/MQAHAAAAAAAHAP7/MQADAAAAAAAIAP7/MQADAAAAAAAIAAIAMQABAAIAAAAJAP7/MQADAAAAAAAJAAIAMQAFAAIAAAAKAP7/MQAHAAAAAAAKAAIAMQAFAAIAAAALAP7/MQADAAAAAAALAAIAMQAFAAIAAAAMAP7/MQADAAAAAAAMAAIAMQAFAAIAAAANAP7/MQAHAAAAAAANAAIAMQABAAIAAAAOAP7/MQAHAAAAAAAOAAIAMQAFAAIAAAAPAP7/MQAHAAAAAAAPAAIAMQAFAAIAAAAQAP7/MQAHAAAAAAAQAAIAMQAFAAIAAAARAP7/MQAHAAAAAAARAAIAMQAFAAIAAAASAP7/MQAHAAAAAAASAAIAMQABAAIAAAATAP7/MQAHAAAAAAATAAIAMQAFAAIAAAAUAP7/MQADAAAAAAAUAAIAMQAFAAIAAAAVAP7/MQAAAAAAAAAVAAIAMQADAAMAAAAWAP//MQAAAAAAAAAWAAAAMQAHAAIAAAAWAAEAMQAHAAMAAAAIAAgAAwABAAcAAAANAAgAAwAIAAkAAAAPAAgAAwAKAAgAAAA=")
 tile_set = ExtResource("7")
 
-[node name="Body" type="Sprite2D" parent="ParallaxBackground/CharacterLayer"]
+[node name="Body" type="Sprite2D" parent="ParallaxBackground/CharacterLayer" unique_id=1942001839]
 unique_name_in_owner = true
 position = Vector2(138, 117)
 texture = SubResource("2")
@@ -155,97 +156,112 @@ hframes = 9
 vframes = 5
 frame = 2
 
-[node name="BodyAnimations" type="AnimationPlayer" parent="ParallaxBackground/CharacterLayer/Body"]
+[node name="BodyAnimations" type="AnimationPlayer" parent="ParallaxBackground/CharacterLayer/Body" unique_id=44339982]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_xif3j")
-}
-autoplay = "idle"
+libraries/ = SubResource("AnimationLibrary_xif3j")
+autoplay = &"idle"
 
-[node name="TitlePivot" type="Node2D" parent="ParallaxBackground/CharacterLayer"]
+[node name="TitlePivot" type="Node2D" parent="ParallaxBackground/CharacterLayer" unique_id=2007757135]
 position = Vector2(144, 24)
 
-[node name="MarginContainer" type="MarginContainer" parent="ParallaxBackground/CharacterLayer/TitlePivot"]
+[node name="MarginContainer" type="MarginContainer" parent="ParallaxBackground/CharacterLayer/TitlePivot" unique_id=141556049]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="ParallaxBackground/CharacterLayer/TitlePivot/MarginContainer"]
+[node name="Panel" type="Panel" parent="ParallaxBackground/CharacterLayer/TitlePivot/MarginContainer" unique_id=2135274278]
 self_modulate = Color(0.823529, 0.823529, 0.823529, 1)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_tkluq")
 
-[node name="Title" type="Label" parent="ParallaxBackground/CharacterLayer/TitlePivot/MarginContainer"]
+[node name="Title" type="Label" parent="ParallaxBackground/CharacterLayer/TitlePivot/MarginContainer" unique_id=1639274010]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_a078r")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a078r")
-text = "REPLACE THIS NAME"
+text = "RUIN RIDER"
 label_settings = SubResource("LabelSettings_t4mfc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MouseCamera" type="Camera2D" parent="."]
+[node name="MouseCamera" type="Camera2D" parent="." unique_id=1280067107]
 position = Vector2(144, 81)
 position_smoothing_enabled = true
 script = ExtResource("6")
 movement_strength = 0.25
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=215840362]
 
-[node name="Container" type="Control" parent="CanvasLayer"]
+[node name="Container" type="Control" parent="CanvasLayer" unique_id=408698871]
 layout_mode = 3
+anchor_left = 0.248
+anchor_right = 0.752
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+
+[node name="MenuButton" type="VBoxContainer" parent="CanvasLayer/Container" unique_id=1559165776]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Buttons" type="VBoxContainer" parent="CanvasLayer/Container"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 11.0
-offset_top = -6.0
-offset_right = 102.0
-offset_bottom = 44.0
-grow_vertical = 2
-mouse_filter = 2
 alignment = 1
 
-[node name="StartButton" type="Button" parent="CanvasLayer/Container/Buttons"]
+[node name="StartButton" type="Button" parent="CanvasLayer/Container/MenuButton" unique_id=407889163]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3")
-theme_override_styles/normal = SubResource("StyleBoxFlat_xif3j")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_xif3j")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_5a1cm")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_5a1cm")
-theme_override_styles/hover = SubResource("StyleBoxFlat_tkec7")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_tkec7")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tkec7")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_tkec7")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_tkluq")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_tkluq")
-theme_override_styles/focus = SubResource("StyleBoxFlat_a078r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_a078r")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_a078r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t4mfc")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_t4mfc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pxlw4")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_pxlw4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_pxlw4")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_pxlw4")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_vyve6")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_vyve6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_047xu")
 text = "Start"
 
-[node name="ExitButton" type="Button" parent="CanvasLayer/Container/Buttons"]
+[node name="OptionsButton" type="Button" parent="CanvasLayer/Container/MenuButton" unique_id=289883213]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3")
-theme_override_styles/normal = SubResource("StyleBoxFlat_xif3j")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_xif3j")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_5a1cm")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_5a1cm")
-theme_override_styles/hover = SubResource("StyleBoxFlat_tkec7")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_tkec7")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tkec7")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_tkec7")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_tkluq")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_tkluq")
-theme_override_styles/focus = SubResource("StyleBoxFlat_a078r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_a078r")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_a078r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t4mfc")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_t4mfc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pxlw4")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_pxlw4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_pxlw4")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_pxlw4")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_vyve6")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_vyve6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_047xu")
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/Container/MenuButton" unique_id=418113742]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_a078r")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_a078r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t4mfc")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_t4mfc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pxlw4")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_pxlw4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_pxlw4")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_pxlw4")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_vyve6")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_vyve6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_047xu")
 text = "Exit"
 
-[connection signal="pressed" from="CanvasLayer/Container/Buttons/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Container/Buttons/ExitButton" to="." method="_on_exit_button_pressed"]
+[node name="OptionsMenu" parent="CanvasLayer" unique_id=773595664 instance=ExtResource("10_tkluq")]
+visible = false
+
+[connection signal="pressed" from="CanvasLayer/Container/MenuButton/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Container/MenuButton/OptionsButton" to="CanvasLayer/OptionsMenu" method="show"]
+[connection signal="pressed" from="CanvasLayer/Container/MenuButton/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -54,6 +54,7 @@ func _return_called() -> void:
 func _restart_called() -> void:
 	GameState.weapons_available = []
 	_setup_level(level)
+	get_tree().paused = false
 
 
 # Callback de nivel siguiente.

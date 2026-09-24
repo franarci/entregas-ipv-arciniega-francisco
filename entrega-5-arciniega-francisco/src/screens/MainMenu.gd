@@ -18,6 +18,7 @@ extends Node
 
 @export var level_manager_scene: PackedScene
 @export var mouse_cursor: Texture
+@onready var options_menu: Control = $CanvasLayer/OptionsMenu
 
 
 func _ready() -> void:

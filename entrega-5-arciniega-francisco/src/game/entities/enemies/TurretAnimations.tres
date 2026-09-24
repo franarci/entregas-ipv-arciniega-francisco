@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=74 format=3 uid="uid://bf581rjwomsxq"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://bf581rjwomsxq"]
 
 [ext_resource type="Texture2D" uid="uid://cua7opit3rikc" path="res://assets/textures/enemies/golem/Golem_AttackA.png" id="1_3bayo"]
 [ext_resource type="Texture2D" uid="uid://crtanj3k5enlm" path="res://assets/textures/enemies/golem/Golem_AttackB.png" id="2_hq0hs"]
@@ -308,7 +308,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("39")
 }],
-"loop": false,
+"loop": 0,
 "name": &"alert",
 "speed": 10.0
 }, {
@@ -334,7 +334,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("46")
 }],
-"loop": false,
+"loop": 0,
 "name": &"attack",
 "speed": 10.0
 }, {
@@ -372,7 +372,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("57")
 }],
-"loop": false,
+"loop": 0,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -404,7 +404,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("23")
 }],
-"loop": false,
+"loop": 0,
 "name": &"die_alert",
 "speed": 5.0
 }, {
@@ -445,7 +445,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("73")
 }],
-"loop": true,
+"loop": 1,
 "name": &"go_normal",
 "speed": 10.0
 }, {
@@ -462,7 +462,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("61")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -479,7 +479,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("27")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle_alert",
 "speed": 5.0
 }, {
@@ -490,7 +490,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nrj40")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk",
 "speed": 2.0
 }, {
@@ -507,7 +507,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qm5yb")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk_alert",
 "speed": 5.0
 }]

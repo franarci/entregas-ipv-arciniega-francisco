@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://dvewglkioxu04"]
+[gd_resource type="TileSet" format=3 uid="uid://dvewglkioxu04"]
 
 [ext_resource type="Texture2D" uid="uid://dqfxo46jqcf68" path="res://assets/textures/tileset/ruins/ruins-day.png" id="1_jajxy"]
 [ext_resource type="Texture2D" uid="uid://ctbw2hewfmv5n" path="res://assets/textures/tileset/ruins/Dungeon Ruins Tileset Day.png" id="2_x6sr7"]
