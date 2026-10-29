@@ -1,0 +1,333 @@
+[gd_scene format=3 uid="uid://dvm2rslkg23fn"]
+
+[ext_resource type="Script" uid="uid://k6lgg24n4g0n" path="res://src/game/entities/player/Player.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dhtokuwmgphp" path="res://assets/textures/player/player_sheet.png" id="2"]
+[ext_resource type="AudioStream" uid="uid://belw4p38l7c0a" path="res://assets/sound/sfx/jump/12_human_jump_1.wav" id="2_1xeb6"]
+[ext_resource type="Script" uid="uid://ddi4vugpomx8x" path="res://src/game/entities/player/PlayerStateMachine.gd" id="2_brwq7"]
+[ext_resource type="AudioStream" uid="uid://2agmtdn7m7il" path="res://assets/sound/sfx/movement/15_human_dash_1.wav" id="3_21lm3"]
+[ext_resource type="Script" uid="uid://d0raneiqcjgc7" path="res://src/game/entities/player/states/IdleState.gd" id="3_dky6r"]
+[ext_resource type="Script" uid="uid://c4vn5dya7k4fg" path="res://src/game/entities/player/states/WalkState.gd" id="4_4cd8d"]
+[ext_resource type="AudioStream" uid="uid://r0ho5ltpkav2" path="res://assets/sound/sfx/movement/16_human_walk_stone_1.wav" id="4_jvc47"]
+[ext_resource type="Script" uid="uid://b0k3kjyyywo0w" path="res://src/game/entities/player/states/JumpState.gd" id="5_abpcd"]
+[ext_resource type="Script" uid="uid://bbu1nfd6mpe2y" path="res://src/game/entities/player/states/DeadState.gd" id="5_tse5b"]
+[ext_resource type="Script" uid="uid://d34gt7wysq8wk" path="res://src/game/entities/player/states/DashState.gd" id="6_u4pco"]
+[ext_resource type="Script" uid="uid://bhd2mumvrmo24" path="res://src/game/entities/player/WeaponManager.gd" id="9_1dgai"]
+
+[sub_resource type="CapsuleShape2D" id="1"]
+radius = 4.0
+height = 16.0
+
+[sub_resource type="Animation" id="3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyPivot/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponManager:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodyPivot/WeaponPivot:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, -5)]
+}
+
+[sub_resource type="Animation" id="8"]
+resource_name = "die"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponManager:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyPivot/Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [27, 28, 29, 30, 31, 32, 33, 34, 35, 40]
+}
+
+[sub_resource type="Animation" id="7"]
+resource_name = "fall"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyPivot/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [22, 23, 24]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyPivot/WeaponPivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, -8)]
+}
+
+[sub_resource type="Animation" id="4"]
+resource_name = "idle"
+length = 0.9
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyPivot/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyPivot/WeaponPivot:position")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-4, -5), Vector2(-4, -6), Vector2(-4, -5)]
+}
+
+[sub_resource type="Animation" id="5"]
+resource_name = "jump"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyPivot/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [18, 19, 20]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyPivot/WeaponPivot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, -7)]
+}
+
+[sub_resource type="Animation" id="6"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyPivot/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12, 13, 14, 15, 16]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyPivot/WeaponPivot:position")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-4, -5), Vector2(-4, -6), Vector2(-4, -7), Vector2(-4, -6), Vector2(-4, -5), Vector2(-4, -6), Vector2(-4, -7), Vector2(-4, -6)]
+}
+
+[sub_resource type="Animation" id="11"]
+resource_name = "walk2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyPivot/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wjetm"]
+_data = {
+&"RESET": SubResource("3"),
+&"die": SubResource("8"),
+&"fall": SubResource("7"),
+&"idle": SubResource("4"),
+&"jump": SubResource("5"),
+&"walk": SubResource("6"),
+&"walk2": SubResource("11")
+}
+
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 288, 160)
+
+[node name="Player" type="CharacterBody2D" unique_id=1664300184]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 11
+floor_max_angle = 0.802851
+floor_snap_length = 16.0
+platform_floor_layers = 4294901761
+script = ExtResource("1")
+jump_sfx = ExtResource("2_1xeb6")
+dash_sfx = ExtResource("3_21lm3")
+walk_sfx = ExtResource("4_jvc47")
+push_force = 160.0
+stamina_recovery_time = 2.0
+stamina_recovery_delay = 0.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=60984237]
+position = Vector2(0, -8)
+shape = SubResource("1")
+
+[node name="StateMachine" type="Node" parent="." unique_id=571895287 node_paths=PackedStringArray("character", "start_state", "states_list")]
+script = ExtResource("2_brwq7")
+character = NodePath("..")
+start_state = NodePath("Idle")
+states_list = [NodePath("Idle"), NodePath("Walk"), NodePath("Dead"), NodePath("Jump"), NodePath("Dash")]
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1657424243]
+script = ExtResource("3_dky6r")
+state_id = &"idle"
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=1244108707]
+script = ExtResource("4_4cd8d")
+state_id = &"walk"
+
+[node name="Jump" type="Node" parent="StateMachine" unique_id=457350816]
+script = ExtResource("5_abpcd")
+state_id = &"jump"
+
+[node name="Dash" type="Node" parent="StateMachine" unique_id=1593241186]
+script = ExtResource("6_u4pco")
+dash_time = 0.2
+speed_multiplier = 3.0
+dash_cooldown_color = Color(0.40784314, 0.43137255, 1, 1)
+state_id = &"dash"
+
+[node name="DashCooldown" type="Timer" parent="StateMachine/Dash" unique_id=1069790120]
+one_shot = true
+
+[node name="Dead" type="Node" parent="StateMachine" unique_id=1672365265]
+script = ExtResource("5_tse5b")
+state_id = &"dead"
+
+[node name="BodyAnimations" type="AnimationPlayer" parent="." unique_id=970241429]
+libraries/ = SubResource("AnimationLibrary_wjetm")
+
+[node name="FloorRaycasts" type="Node2D" parent="." unique_id=927977099]
+
+[node name="RayCast2D1" type="RayCast2D" parent="FloorRaycasts" unique_id=2119011968]
+enabled = false
+target_position = Vector2(0, 5)
+
+[node name="RayCast2D2" type="RayCast2D" parent="FloorRaycasts" unique_id=1472209492]
+position = Vector2(-3, 0)
+enabled = false
+target_position = Vector2(0, 5)
+
+[node name="RayCast2D3" type="RayCast2D" parent="FloorRaycasts" unique_id=1133133666]
+position = Vector2(3, 0)
+enabled = false
+target_position = Vector2(0, 5)
+
+[node name="BodyPivot" type="Node2D" parent="." unique_id=159679784]
+
+[node name="Body" type="Sprite2D" parent="BodyPivot" unique_id=945310781]
+unique_name_in_owner = true
+position = Vector2(-2, -11)
+texture = SubResource("2")
+hframes = 9
+vframes = 5
+
+[node name="WeaponPivot" type="Node2D" parent="BodyPivot" unique_id=2045419064]
+position = Vector2(-4, -5)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="BodyPivot/WeaponPivot" unique_id=1533198889]
+remote_path = NodePath("../../../WeaponManager")
+update_rotation = false
+update_scale = false
+
+[node name="WeaponManager" type="Node2D" parent="." unique_id=373067331]
+position = Vector2(-4, -5)
+script = ExtResource("9_1dgai")
+
+[node name="PlayerSfx" type="AudioStreamPlayer" parent="." unique_id=95959115]
+
+[connection signal="healed" from="." to="StateMachine" method="notify_healed"]
+[connection signal="hit" from="." to="StateMachine" method="notify_hit"]
+[connection signal="hp_changed" from="." to="StateMachine" method="notify_hp_changed"]
+[connection signal="mana_changed" from="." to="StateMachine" method="notify_mana_changed"]
+[connection signal="stamina_changed" from="." to="StateMachine" method="notify_stamina_changed"]
+[connection signal="animation_finished" from="BodyAnimations" to="StateMachine" method="_on_animation_finished"]
+[connection signal="finished" from="PlayerSfx" to="." method="_on_player_sfx_finished"]

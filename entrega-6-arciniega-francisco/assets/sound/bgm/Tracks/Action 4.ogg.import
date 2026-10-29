@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cj28a1xfeeltu"
+path="res://.godot/imported/Action 4.ogg-206db9673a31d453e62dd11a608f4c1b.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sound/bgm/Tracks/Action 4.ogg"
+dest_files=["res://.godot/imported/Action 4.ogg-206db9673a31d453e62dd11a608f4c1b.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

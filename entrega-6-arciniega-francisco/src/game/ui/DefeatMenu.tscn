@@ -1,0 +1,171 @@
+[gd_scene load_steps=11 format=3 uid="uid://7o8w0bk4iaf8"]
+
+[ext_resource type="FontFile" path="res://assets/fonts/Default-Medium.tres" id="1"]
+[ext_resource type="FontFile" path="res://assets/fonts/Default-Big.tres" id="2"]
+[ext_resource type="Script" uid="uid://d4c2324tk5dwb" path="res://src/game/ui/DefeatMenu.gd" id="3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cc220"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0.2784314, 0.29411766, 0.42745098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.49019608, 0.41960785, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_djxqn"]
+font = ExtResource("2")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bcm5w"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.2509804)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu1r0"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.62352943)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k68iv"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.4392157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bc6jv"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0, 0, 0.2509804)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ibfjf"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0.5882353, 0.6392157, 0, 0.4)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[node name="DefeatMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.25098)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -60.0
+offset_right = 80.0
+offset_bottom = 60.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cc220")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 17.0
+offset_right = -10.0
+offset_bottom = 38.0
+text = "Level Won!"
+label_settings = SubResource("LabelSettings_djxqn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -8.0
+offset_right = -15.0
+offset_bottom = 12.0
+
+[node name="RetryButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bcm5w")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_bcm5w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wu1r0")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_wu1r0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k68iv")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_k68iv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_k68iv")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_k68iv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_bc6jv")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_bc6jv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ibfjf")
+text = "Next Level"
+
+[node name="ReturnButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bcm5w")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_bcm5w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wu1r0")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_wu1r0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k68iv")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_k68iv")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_k68iv")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_k68iv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_bc6jv")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_bc6jv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ibfjf")
+text = "Return"
+
+[connection signal="pressed" from="Panel/VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]
