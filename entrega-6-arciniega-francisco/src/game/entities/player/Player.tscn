@@ -3,11 +3,22 @@
 [ext_resource type="Script" uid="uid://k6lgg24n4g0n" path="res://src/game/entities/player/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dhtokuwmgphp" path="res://assets/textures/player/player_sheet.png" id="2"]
 [ext_resource type="AudioStream" uid="uid://belw4p38l7c0a" path="res://assets/sound/sfx/jump/12_human_jump_1.wav" id="2_1xeb6"]
+[ext_resource type="AudioStream" path="res://assets/sound/sfx/jump/12_human_jump_2.wav" id="2_jump2"]
+[ext_resource type="AudioStream" path="res://assets/sound/sfx/jump/12_human_jump_3.wav" id="2_jump3"]
+[ext_resource type="AudioStream" path="res://assets/sound/sfx/jump/13_human_jump_land_1.wav" id="2_land1"]
+[ext_resource type="AudioStream" path="res://assets/sound/sfx/jump/13_human_jump_land_2.wav" id="2_land2"]
 [ext_resource type="Script" uid="uid://ddi4vugpomx8x" path="res://src/game/entities/player/PlayerStateMachine.gd" id="2_brwq7"]
 [ext_resource type="AudioStream" uid="uid://2agmtdn7m7il" path="res://assets/sound/sfx/movement/15_human_dash_1.wav" id="3_21lm3"]
+[ext_resource type="AudioStream" path="res://assets/sound/sfx/movement/15_human_dash_2.wav" id="3_dash2"]
 [ext_resource type="Script" uid="uid://d0raneiqcjgc7" path="res://src/game/entities/player/states/IdleState.gd" id="3_dky6r"]
 [ext_resource type="Script" uid="uid://c4vn5dya7k4fg" path="res://src/game/entities/player/states/WalkState.gd" id="4_4cd8d"]
 [ext_resource type="AudioStream" uid="uid://r0ho5ltpkav2" path="res://assets/sound/sfx/movement/16_human_walk_stone_1.wav" id="4_jvc47"]
+[ext_resource type="AudioStream" path="res://assets/sound/sfx/movement/16_human_walk_stone_2.wav" id="4_walk2"]
+[ext_resource type="AudioStream" path="res://assets/sound/sfx/movement/16_human_walk_stone_3.wav" id="4_walk3"]
+[ext_resource type="AudioStream" path="res://assets/sound/sfx/player/11_human_damage_1.wav" id="4_damage1"]
+[ext_resource type="AudioStream" path="res://assets/sound/sfx/player/11_human_damage_2.wav" id="4_damage2"]
+[ext_resource type="AudioStream" path="res://assets/sound/sfx/player/11_human_damage_3.wav" id="4_damage3"]
+[ext_resource type="AudioStream" path="res://assets/sound/sfx/player/14_human_death_spin.wav" id="4_death"]
 [ext_resource type="Script" uid="uid://b0k3kjyyywo0w" path="res://src/game/entities/player/states/JumpState.gd" id="5_abpcd"]
 [ext_resource type="Script" uid="uid://bbu1nfd6mpe2y" path="res://src/game/entities/player/states/DeadState.gd" id="5_tse5b"]
 [ext_resource type="Script" uid="uid://d34gt7wysq8wk" path="res://src/game/entities/player/states/DashState.gd" id="6_u4pco"]
@@ -239,9 +250,12 @@ floor_max_angle = 0.802851
 floor_snap_length = 16.0
 platform_floor_layers = 4294901761
 script = ExtResource("1")
-jump_sfx = ExtResource("2_1xeb6")
-dash_sfx = ExtResource("3_21lm3")
-walk_sfx = ExtResource("4_jvc47")
+jump_sfx = Array[AudioStream]([ExtResource("2_1xeb6"), ExtResource("2_jump2"), ExtResource("2_jump3")])
+land_sfx = Array[AudioStream]([ExtResource("2_land1"), ExtResource("2_land2")])
+dash_sfx = Array[AudioStream]([ExtResource("3_21lm3"), ExtResource("3_dash2")])
+walk_sfx = Array[AudioStream]([ExtResource("4_jvc47"), ExtResource("4_walk2"), ExtResource("4_walk3")])
+damage_sfx = Array[AudioStream]([ExtResource("4_damage1"), ExtResource("4_damage2"), ExtResource("4_damage3")])
+death_sfx = Array[AudioStream]([ExtResource("4_death")])
 push_force = 160.0
 stamina_recovery_time = 2.0
 stamina_recovery_delay = 0.1
@@ -323,6 +337,7 @@ position = Vector2(-4, -5)
 script = ExtResource("9_1dgai")
 
 [node name="PlayerSfx" type="AudioStreamPlayer" parent="." unique_id=95959115]
+bus = &"SFX"
 
 [connection signal="healed" from="." to="StateMachine" method="notify_healed"]
 [connection signal="hit" from="." to="StateMachine" method="notify_hit"]

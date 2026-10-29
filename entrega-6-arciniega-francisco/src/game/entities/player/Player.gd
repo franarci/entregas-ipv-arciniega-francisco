@@ -29,9 +29,12 @@ signal died()
 
 
 @export_category("audio")
-@export var jump_sfx: AudioStream
-@export var dash_sfx: AudioStream
-@export var walk_sfx: AudioStream
+@export var jump_sfx: Array[AudioStream]
+@export var land_sfx: Array[AudioStream]
+@export var dash_sfx: Array[AudioStream]
+@export var walk_sfx: Array[AudioStream]
+@export var damage_sfx: Array[AudioStream]
+@export var death_sfx: Array[AudioStream]
 
 var _loop_audio: bool = false
 
@@ -171,6 +174,8 @@ func notify_hit(amount: int = 1) -> void:
 # Y acá se maneja la salud.
 func sum_hp(amount: int) -> void:
 	hp = clamp(hp + amount, 0, max_hp)
+	if amount < 0:
+		_play_audio_random(damage_sfx)
 	hp_changed.emit(hp, max_hp)
 	print("hp_changed %s %s" % [hp, max_hp])
 
@@ -241,24 +246,25 @@ func _play_animation(animation: StringName) -> void:
 		body_animations.play(animation)
 
 func _play_audio(audio: AudioStream) -> void:
-	_loop_audio = false
-	player_sfx.stream = audio
-	player_sfx.play(0)
+	AudioManager.play_sfx(audio)
 
 
-func _play_looping_audio(audio: AudioStream) -> void:
+func _play_audio_random(audio_list: Array[AudioStream]) -> void:
+	AudioManager.play_random_sfx(audio_list)
+
+
+func _play_looping_audio(audio_list: Array[AudioStream]) -> void:
 	_loop_audio = true
-	if player_sfx.stream != audio or not player_sfx.playing:
-		player_sfx.stream = audio
+	if not player_sfx.playing and not audio_list.is_empty():
+		player_sfx.stream = audio_list.pick_random()
 		player_sfx.play()
 
 
 func _stop_looping_audio() -> void:
 	_loop_audio = false
-	if player_sfx.stream == walk_sfx:
-		player_sfx.stop()
+	player_sfx.stop()
 
 
 func _on_player_sfx_finished() -> void:
 	if _loop_audio:
-		player_sfx.play()
+		_play_looping_audio(walk_sfx)

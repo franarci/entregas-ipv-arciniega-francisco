@@ -3,6 +3,8 @@
 ## (se puede abrir el script con Ctrl+click)
 extends TurretState
 
+const FOOTSTEP_SOUND: AudioStream = preload("res://assets/sound/sfx/enemies/rocks.wav")
+
 # Definimos variables para manejar el comportamiento de "caminata"
 
 ## Radio de búsqueda del punto deseado objetivo
@@ -18,9 +20,13 @@ extends TurretState
 
 # El path que definimos con el pathfinding
 var path: PackedVector2Array = PackedVector2Array()
+var _footstep_timer: float = 0.0
+var _next_footstep: float = 0.55
 
 
 func enter() -> void:
+	_footstep_timer = 0.0
+	_next_footstep = randf_range(0.4, 0.65)
 	# Al ingresar, primero definimos si tenemos un "pathfinding" para usar
 	if character.pathfinding != null:
 		
@@ -59,7 +65,7 @@ func exit() -> void:
 	path = PackedVector2Array()
 
 
-func update(_delta: float) -> void:
+func update(delta: float) -> void:
 	# Primero chequeamos si debemos entrar en Alert
 	if character._can_see_target():
 		finished.emit(&"alert")
@@ -97,6 +103,11 @@ func update(_delta: float) -> void:
 	
 	# Aplicamos el movimiento en el personaje
 	character.move_and_slide()
+	_footstep_timer += delta
+	if _footstep_timer >= _next_footstep and character.velocity.length() > 10.0:
+		AudioManager.play_sfx_at(FOOTSTEP_SOUND, character.global_position)
+		_footstep_timer = 0.0
+		_next_footstep = randf_range(0.4, 0.65)
 	
 	# Y orientamos al cuerpo en la dirección de movimiento
 	character.body_anim.flip_h =  character.velocity.x < 0

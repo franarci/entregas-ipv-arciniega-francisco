@@ -6,6 +6,7 @@ extends PlayerState
 # en el enter
 func enter() -> void:
 	character.died.emit()
+	character._play_audio_random(character.death_sfx)
 	character._play_animation(&"die")
 
 

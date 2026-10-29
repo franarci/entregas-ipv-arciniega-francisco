@@ -6,7 +6,7 @@ var jumps: int = 0
 
 
 func enter() -> void:
-	character._play_audio(character.jump_sfx)
+	character._play_audio_random(character.jump_sfx)
 	character.velocity.y = -character.jump_speed
 	character._play_animation(&"jump")
 
@@ -24,8 +24,8 @@ func handle_input(event: InputEvent) -> void:
 	elif event.is_action_pressed(&"jump") && jumps < jumps_limit:
 		jumps += 1
 		character.velocity.y = -character.jump_speed
+		character._play_audio_random(character.jump_sfx)
 		character._play_animation(&"jump")
-		character._play_audio(character.jump_sfx)
 
 
 func update(delta: float) -> void:
@@ -35,6 +35,7 @@ func update(delta: float) -> void:
 		character._handle_deacceleration(delta)
 	character._apply_movement(delta)
 	if character.is_on_floor():
+		character._play_audio_random(character.land_sfx)
 		if character.h_movement_direction == 0:
 			finished.emit(&"idle")
 		else:

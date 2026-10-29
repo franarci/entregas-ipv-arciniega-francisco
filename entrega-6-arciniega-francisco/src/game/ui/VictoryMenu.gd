@@ -13,6 +13,7 @@ func _ready() -> void:
 
 
 func _on_level_won() -> void:
+	AudioManager.play_ending_music()
 	show()
 
 

@@ -21,8 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://diqw6av3b16vy" path="res://src/game/entities/player/weapons/SwordWeapon.tscn" id="14_onhse"]
 [ext_resource type="Script" uid="uid://elxua0bu3ocy" path="res://src/game/environment/CallbackArguments.gd" id="14_uyki1"]
 [ext_resource type="PackedScene" uid="uid://d1x7egwwqxvb3" path="res://src/game/entities/player/weapons/StaffWeapon.tscn" id="19_xcfqc"]
-[ext_resource type="AudioStream" uid="uid://cjxr08rh7cp4p" path="res://assets/sound/bgm/Tracks/Ambient 1.ogg" id="22_ilqdu"]
-
 [sub_resource type="Resource" id="Resource_rp77q"]
 script = ExtResource("14_uyki1")
 callback_path = &"min_zoom"
@@ -495,10 +493,6 @@ callbacks = Array[ExtResource("14_uyki1")]([SubResource("Resource_lbp3h"), SubRe
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Triggers/TriggerArea5" unique_id=1190956356]
 position = Vector2(-0.75, -351.5)
 shape = SubResource("RectangleShape2D_wqx7g")
-
-[node name="Background" type="AudioStreamPlayer" parent="." unique_id=798597863]
-stream = ExtResource("22_ilqdu")
-autoplay = true
 
 [connection signal="restart_selected" from="UILayer/PauseMenu" to="." method="_on_restart_requested"]
 [connection signal="return_selected" from="UILayer/PauseMenu" to="." method="_on_return_requested"]

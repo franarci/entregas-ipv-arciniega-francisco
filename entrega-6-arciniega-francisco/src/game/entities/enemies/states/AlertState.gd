@@ -5,6 +5,8 @@ extends TurretState
 
 
 func enter() -> void:
+	AudioManager.set_combat_active(character, true)
+	AudioManager.play_random_sfx_at(character.ALERT_SOUNDS, character.global_position)
 	# Primero detenemos el character para que no se mueva más
 	character.velocity = Vector2.ZERO
 	
@@ -13,7 +15,7 @@ func enter() -> void:
 
 
 func exit() -> void:
-	return
+	AudioManager.set_combat_active(character, false)
 
 
 func update(_delta: float) -> void:

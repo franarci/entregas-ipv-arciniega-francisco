@@ -27,7 +27,7 @@ func _process(_delta: float) -> void:
 
 
 func enter() -> void:
-	character._play_audio(character.dash_sfx)
+	character._play_audio_random(character.dash_sfx)
 	if  !dash_cooldown_timer.is_stopped() || character.stamina < dash_stamina_cost:
 		finished.emit(&"walk")
 	else:

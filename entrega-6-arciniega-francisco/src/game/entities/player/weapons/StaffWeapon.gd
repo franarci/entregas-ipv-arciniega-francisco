@@ -1,5 +1,12 @@
 extends AbstractWeapon
 
+const BASIC_CAST_SOUNDS: Array[AudioStream] = [
+	preload("res://assets/sound/sfx/attacks/staff/10_human_special_atk_1.wav"),
+	preload("res://assets/sound/sfx/attacks/staff/10_human_special_atk_2.wav"),
+]
+const WIND_CAST_SOUND: AudioStream = preload("res://assets/sound/sfx/attacks/staff/shockwave.ogg")
+const FIRE_CAST_SOUND: AudioStream = preload("res://assets/sound/sfx/attacks/staff/explosion.wav")
+
 ## Abstracción del arma estilo cañon vista anteriormente. Implementa la
 ## interfaz de AbstractWeapon y expande los ataques a 2 más.
 ## Los ataques ahora consumen Mana, y son dependientes de la cantidad
@@ -72,6 +79,13 @@ func attack(type: int) -> void:
 ## La animación de disparo llama a esta función que va a ser la que instancie
 ## el proyectil
 func _fire(type: int) -> void:
+	match type:
+		ATT_TYPE.PRIMARY:
+			AudioManager.play_random_sfx(BASIC_CAST_SOUNDS)
+		ATT_TYPE.SECONDARY:
+			AudioManager.play_sfx(WIND_CAST_SOUND)
+		ATT_TYPE.SPECIAL:
+			AudioManager.play_sfx(FIRE_CAST_SOUND)
 	var projectile_instance: Node = projectile_scenes[type].instantiate()
 	projectile_container.add_child(projectile_instance)
 	projectile_instance.initialize(

@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Minimalist12.ogg-61f135a3e3ec34047ea35724bbdc
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

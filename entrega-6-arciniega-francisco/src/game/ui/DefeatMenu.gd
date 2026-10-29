@@ -19,6 +19,7 @@ func _on_current_player_changed(player: Player) -> void:
 
 func _on_hp_changed(hp: int, _hp_max: int) -> void:
 	if hp == 0:
+		AudioManager.play_ending_music()
 		show()
 
 

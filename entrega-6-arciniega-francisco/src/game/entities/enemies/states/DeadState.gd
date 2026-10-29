@@ -4,6 +4,8 @@ extends TurretState
 
 
 func enter() -> void:
+	AudioManager.set_combat_active(character, false)
+	AudioManager.play_sfx_at(character.DEATH_SOUND, character.global_position)
 	# Seteamos todas las variables de muerte para que no joda
 	character._play_animation(&"dead")
 	character.dead = true

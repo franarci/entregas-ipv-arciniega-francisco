@@ -1,5 +1,21 @@
 extends AbstractWeapon
 
+const SWING_SOUNDS: Array[AudioStream] = [
+	preload("res://assets/sound/sfx/attacks/sword/07_human_atk_sword_1.wav"),
+	preload("res://assets/sound/sfx/attacks/sword/07_human_atk_sword_2.wav"),
+	preload("res://assets/sound/sfx/attacks/sword/07_human_atk_sword_3.wav"),
+]
+const HIT_SOUNDS: Array[AudioStream] = [
+	preload("res://assets/sound/sfx/attacks/sword/26_sword_hit_1.wav"),
+	preload("res://assets/sound/sfx/attacks/sword/26_sword_hit_2.wav"),
+	preload("res://assets/sound/sfx/attacks/sword/26_sword_hit_3.wav"),
+]
+const MISS_SOUNDS: Array[AudioStream] = [
+	preload("res://assets/sound/sfx/attacks/sword/27_sword_miss_1.wav"),
+	preload("res://assets/sound/sfx/attacks/sword/27_sword_miss_2.wav"),
+	preload("res://assets/sound/sfx/attacks/sword/27_sword_miss_3.wav"),
+]
+
 ## Arma que representa a una espada. Ideal para tormentas que se aproximan,
 ## o para gente que respira muy bien mientras duerme.
 ## Los ataques consumen Stamina.
@@ -30,6 +46,8 @@ extends AbstractWeapon
 
 var aim_point: Vector2
 var character: Player
+var _attack_hit: bool = false
+var _attack_type: AbstractWeapon.ATT_TYPE = AbstractWeapon.ATT_TYPE.PRIMARY
 
 
 func _ready() -> void:
@@ -87,6 +105,9 @@ func update_weapon(_delta: float, p_character: Node, can_attack: bool = true) ->
 
 func attack(type: int) -> void:
 	# No disparo de inmediato, sino que delego a una animación de disparo
+	_attack_hit = false
+	_attack_type = type
+	AudioManager.play_random_sfx(SWING_SOUNDS)
 	attacks_anim.play(anim_map[type])
 	aim_point = get_global_mouse_position()
 
@@ -131,6 +152,8 @@ func _attack_dash(type: int) -> void:
 		# Si puede recibir golpes, es un objetivo, sino, es pared.
 		# Usamos duck typing para determinar el tipo.
 		if collider.has_method(&"notify_hit"):
+			_attack_hit = true
+			AudioManager.play_random_sfx(HIT_SOUNDS)
 			# Te pego que te pego
 			collider.notify_hit(-dash_damage)
 			# Lo agrego a excepciones para que no colisione más el
@@ -242,13 +265,21 @@ func _apply_cut_impulse() -> void:
 
 
 # Al terminar las animaciones, entro en "RESET" para limpiar.
-func _on_attacks_anim_animation_finished(_anim_name: StringName) -> void:
+func _on_attacks_anim_animation_finished(anim_name: StringName) -> void:
+	if (
+		anim_name != &"RESET" &&
+		_attack_type != AbstractWeapon.ATT_TYPE.SECONDARY &&
+		not _attack_hit
+	):
+		AudioManager.play_random_sfx(MISS_SOUNDS)
 	attacks_anim.play(&"RESET")
 
 
 # Si el corte detecta enemigos, aplica daño y un knockback.
 func _on_cut_area_body_entered(body: Node2D) -> void:
 	if body.has_method(&"notify_hit"):
+		_attack_hit = true
+		AudioManager.play_random_sfx(HIT_SOUNDS)
 		body.notify_hit(-cut_damage)
 	if &"velocity" in body && body is Node2D:
 		body.velocity += global_position.direction_to(aim_point) * cut_push

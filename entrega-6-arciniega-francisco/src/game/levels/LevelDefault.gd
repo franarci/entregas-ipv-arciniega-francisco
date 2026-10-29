@@ -22,6 +22,7 @@ signal next_level_requested()
 
 func _ready() -> void:
 	randomize()
+	AudioManager.start_level_audio()
 
 
 # Funciones que hacen de interfaz para las señales

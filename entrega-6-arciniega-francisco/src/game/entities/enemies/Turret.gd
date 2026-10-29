@@ -1,6 +1,18 @@
 extends CharacterBody2D
 class_name EnemyTurret
 
+const DAMAGE_SOUNDS: Array[AudioStream] = [
+	preload("res://assets/sound/sfx/enemies/21_orc_damage_1.wav"),
+	preload("res://assets/sound/sfx/enemies/21_orc_damage_2.wav"),
+	preload("res://assets/sound/sfx/enemies/21_orc_damage_3.wav"),
+]
+const ATTACK_SOUND: AudioStream = preload("res://assets/sound/sfx/enemies/20_orc_special_atk.wav")
+const ALERT_SOUNDS: Array[AudioStream] = [
+	preload("res://assets/sound/sfx/enemies/Scream_Robotic.wav"),
+	preload("res://assets/sound/sfx/enemies/Hiss.wav"),
+]
+const DEATH_SOUND: AudioStream = preload("res://assets/sound/sfx/enemies/24_orc_death_spin.wav")
+
 signal hit(amount: int)
 signal hp_changed(hp, max_hp)
 
@@ -35,6 +47,7 @@ func initialize(turret_pos: Vector2, projectile_container: Node) -> void:
 
 func _fire() -> void:
 	if target != null:
+		AudioManager.play_sfx_at(ATTACK_SOUND, global_position)
 		var proj_instance: Node = projectile_scene.instantiate()
 		if _projectile_container == null:
 			_projectile_container = get_parent()
@@ -79,6 +92,8 @@ var hp_tween: Tween
 
 func _sum_hp(amount: int) -> void:
 	hp = clamp(hp + amount, 0, max_hp)
+	if amount < 0:
+		AudioManager.play_random_sfx_at(DAMAGE_SOUNDS, global_position)
 	hp_progress.max_value = max_hp
 	hp_progress.value = hp
 	hp_changed.emit(hp, max_hp)

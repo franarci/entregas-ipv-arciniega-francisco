@@ -23,6 +23,7 @@ extends Node
 
 func _ready() -> void:
 	Input.set_custom_mouse_cursor(mouse_cursor)
+	AudioManager.start_menu_music()
 
 
 func _on_start_button_pressed() -> void:
