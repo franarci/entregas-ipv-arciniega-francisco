@@ -1,0 +1,209 @@
+[gd_scene format=3 uid="uid://vhkng747ncb1"]
+
+[ext_resource type="PackedScene" uid="uid://bms2yh6imdq61" path="res://src/game/ui/Options/action_input.tscn" id="1_11gqo"]
+[ext_resource type="Script" uid="uid://dro331nwg2kji" path="res://src/game/ui/Options/options_menu.gd" id="1_755x2"]
+[ext_resource type="FontFile" path="res://assets/fonts/Default-Medium.tres" id="1_e4cla"]
+[ext_resource type="FontFile" uid="uid://bqt658n8k8iip" path="res://assets/fonts/DungeonFont.ttf" id="2_11gqo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4mfc"]
+bg_color = Color(0.16101536, 0.11795483, 0.05142422, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8664389, 1, 0.7713597, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xif3j"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.2509804)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5a1cm"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.62352943)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkec7"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.4392157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkluq"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0, 0, 0.2509804)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a078r"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0.5882353, 0.6392157, 0, 0.4)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_a078r"]
+base_font = ExtResource("2_11gqo")
+variation_face_index = 2
+variation_transform = Transform2D(1, 0, -0.115, 1, 0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tkluq"]
+font = SubResource("FontVariation_a078r")
+font_size = 22
+
+[node name="OptionsMenu" type="Control" unique_id=773595664]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_755x2")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1215266429]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.2509804)
+
+[node name="MainPanel" type="Panel" parent="." unique_id=676635373]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t4mfc")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainPanel" unique_id=1204908688]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.15
+anchor_right = 0.95
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="KeyMapping" type="VBoxContainer" parent="MainPanel/ScrollContainer" unique_id=2056578503]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ActionLeft" parent="MainPanel/ScrollContainer/KeyMapping" unique_id=1541047456 instance=ExtResource("1_11gqo")]
+layout_mode = 2
+action_input = "A"
+action_name = "Move Left"
+
+[node name="ActionRight" parent="MainPanel/ScrollContainer/KeyMapping" unique_id=2046744159 instance=ExtResource("1_11gqo")]
+layout_mode = 2
+action_input = "D"
+action_name = "Move Right"
+
+[node name="ActionJump" parent="MainPanel/ScrollContainer/KeyMapping" unique_id=562683260 instance=ExtResource("1_11gqo")]
+layout_mode = 2
+action_input = "Space / W"
+action_name = "Jump"
+
+[node name="ActionHit" parent="MainPanel/ScrollContainer/KeyMapping" unique_id=1605814367 instance=ExtResource("1_11gqo")]
+layout_mode = 2
+action_input = "L Click"
+action_name = "Hit"
+
+[node name="ActionDash" parent="MainPanel/ScrollContainer/KeyMapping" unique_id=1077638248 instance=ExtResource("1_11gqo")]
+layout_mode = 2
+action_input = "Shift"
+action_name = "Dash"
+
+[node name="ActionSpAttack" parent="MainPanel/ScrollContainer/KeyMapping" unique_id=278336417 instance=ExtResource("1_11gqo")]
+layout_mode = 2
+action_input = "RMB"
+action_name = "Special Attack"
+
+[node name="ActionNextWeapon" parent="MainPanel/ScrollContainer/KeyMapping" unique_id=681732908 instance=ExtResource("1_11gqo")]
+layout_mode = 2
+action_input = "Srcroll ⬆, E"
+action_name = "Next Weapon"
+
+[node name="ActionPrevWeapon2" parent="MainPanel/ScrollContainer/KeyMapping" unique_id=1819664266 instance=ExtResource("1_11gqo")]
+layout_mode = 2
+action_input = "Srcroll ⬇, Q"
+action_name = "Prev Weapon"
+
+[node name="Return" type="Button" parent="MainPanel" unique_id=1077111892]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.5
+offset_top = -29.945007
+offset_right = 27.5
+offset_bottom = -6.9450073
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_e4cla")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xif3j")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_xif3j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5a1cm")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_5a1cm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_tkec7")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_tkluq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_tkluq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_a078r")
+text = "Return"
+
+[node name="Label" type="Label" parent="MainPanel" unique_id=1473199253]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_tkluq")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MainPanel/Return" to="." method="_on_return_pressed"]

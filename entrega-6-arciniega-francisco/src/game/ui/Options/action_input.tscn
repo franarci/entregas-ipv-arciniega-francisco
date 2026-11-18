@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bms2yh6imdq61"]
+
+[ext_resource type="Script" uid="uid://diwakm2d5n10x" path="res://src/game/ui/Options/action_input.gd" id="1_pc6pl"]
+
+[node name="ActionInput" type="PanelContainer" unique_id=278336417]
+script = ExtResource("1_pc6pl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1180934807]
+modulate = Color(5.472, 5.472, 5.472, 1)
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=1881751055]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="Input" type="Label" parent="HBoxContainer/PanelContainer" unique_id=109866249]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Action" type="Label" parent="HBoxContainer" unique_id=1630998358]
+layout_mode = 2
+horizontal_alignment = 3

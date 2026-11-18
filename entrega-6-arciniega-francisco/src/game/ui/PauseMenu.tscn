@@ -1,0 +1,218 @@
+[gd_scene format=3 uid="uid://d0wl53hsyfl8g"]
+
+[ext_resource type="Script" uid="uid://dn3fkdp1t71m6" path="res://src/game/ui/PauseMenu.gd" id="1"]
+[ext_resource type="FontFile" path="res://assets/fonts/Default-Big.tres" id="2"]
+[ext_resource type="FontFile" path="res://assets/fonts/Default-Medium.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://vhkng747ncb1" path="res://src/game/ui/Options/OptionsMenu.tscn" id="4_rabgt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkb4l"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0.2784314, 0.29411766, 0.42745098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.49019608, 0.41960785, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_tr5av"]
+font = ExtResource("2")
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmcsp"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.2509804)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rabgt"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.62352943)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ijoxx"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.29803923, 0.6392157, 0.4392157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kuqvp"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0, 0, 0.2509804)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80nc3"]
+content_margin_left = 5.0
+content_margin_top = 3.0
+content_margin_right = 5.0
+content_margin_bottom = 3.0
+bg_color = Color(0.5882353, 0.6392157, 0, 0.4)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+
+[node name="PauseMenu" type="Control" unique_id=1309395153]
+process_mode = 3
+process_thread_group = 1
+process_thread_group_order = 0
+process_thread_messages = 0
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1869048293]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.25098)
+
+[node name="Panel" type="Panel" parent="." unique_id=515878244]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -60.0
+offset_right = 80.0
+offset_bottom = 60.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tkb4l")
+
+[node name="Label" type="Label" parent="Panel" unique_id=1946659035]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 9.0
+offset_top = 5.0
+offset_right = -7.0
+offset_bottom = 29.0
+text = "Paused"
+label_settings = SubResource("LabelSettings_tr5av")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1440529888]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.32
+anchor_top = 0.28
+anchor_right = 0.738
+anchor_bottom = 0.813
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=876766206]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=1385125551]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rmcsp")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_rmcsp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rabgt")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_rabgt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_kuqvp")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_kuqvp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_80nc3")
+text = "Resume"
+
+[node name="ResetButton" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=1577597618]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rmcsp")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_rmcsp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rabgt")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_rabgt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_kuqvp")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_kuqvp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_80nc3")
+text = "Reset Level"
+
+[node name="OptionsButton" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=489499178]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rmcsp")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_rmcsp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rabgt")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_rabgt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_kuqvp")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_kuqvp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_80nc3")
+text = "Options"
+
+[node name="ReturnButton" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=7402438]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rmcsp")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_rmcsp")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rabgt")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_rabgt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_ijoxx")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_kuqvp")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_kuqvp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_80nc3")
+text = "Return to Menu"
+
+[node name="OptionsMenu" parent="." unique_id=773595664 instance=ExtResource("4_rabgt")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/OptionsButton" to="OptionsMenu" method="show"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/ReturnButton" to="." method="_on_return_button_pressed"]

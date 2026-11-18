@@ -1,0 +1,11 @@
+78098b89c88a74ebe8c20117b8754620
+::res://::1791748126
+icon.svg::CompressedTexture2D::5804609236261058128::1787880548::1791748133::1::::<><><>0<>0<>85946db5699aa4951cd284c9b38cf60d<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+main.tscn::PackedScene::1265904379992166162::1787880548::0::1::::<><><>0<>0<><>::uid://c2b8t2yjp640::::res://assets/background.png<>uid://vmnvu3orqva8::::res://entities/player.tscn<>uid://bno04tnug5lal::::res://entities/player.gd
+::res://assets/::1788055495
+background.png::CompressedTexture2D::196236575583782327::1787880548::1791748133::1::::<><><>0<>0<>c66bf99a88d38012f8973725d201da1f<>res://.godot/imported/background.png-1fdba8b6a966ce2c2ffc607f7c096e95.ctex::
+floor.png::CompressedTexture2D::3153421178252575693::1787880548::1791748133::1::::<><><>0<>0<>249b12cbc82975e2767a59ee66182a2d<>res://.godot/imported/floor.png-38406586736af2fe805d7b886727ee47.ctex::
+player.png::CompressedTexture2D::8084803989620976789::1787880548::1791748133::1::::<><><>0<>0<>fa48a3d39158392222ea33bc561eff2f<>res://.godot/imported/player.png-be2216fcaabb5c62aa2466cd9a5726a8.ctex::
+::res://entities/::1787880548
+player.gd::GDScript::3329347671330790983::1787880548::0::1::::<>Sprite2D<><>0<>0<><>::
+player.tscn::PackedScene::1499566166406357573::1787880548::0::1::::<><><>0<>0<><>::uid://dnglsm28reisb::::res://assets/player.png
